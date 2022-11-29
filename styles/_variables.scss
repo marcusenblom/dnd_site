@@ -1,0 +1,105 @@
+$mainFontLight: 'Gilroy Light', 'Roboto', "Helvetica", Arial, sans-serif;
+$mainFontRegular: 'Gilroy Regular', 'Roboto', "Helvetica", Arial, sans-serif;
+$mainFontMedium: 'Gilroy Medium', 'Roboto', "Helvetica", Arial, sans-serif;
+$mainFontSemiBold: 'Gilroy SemiBold', 'Roboto', "Helvetica", Arial, sans-serif;
+$mainFontBold: 'Gilroy Bold', 'Roboto', "Helvetica", Arial, sans-serif;
+$mainFontBlack: 'Gilroy Black', 'Roboto', "Helvetica", Arial, sans-serif;
+
+$mainColorDark: #1A3053;
+$mainColorMediumDark: #275AA4;
+$mainColorMediumLight: #1E9DD9;
+$mainColorLight: #62C3D5;
+$lightBlueBackground: #FBFCFF;
+$ctaOrange: #FFBB37;
+$red: #DC3838;
+$blue: #265BA5;
+$softBlue: #FAFCFF;
+$mainColorCTA: #FFA800;
+$darkError: rgb(175, 0, 0);
+$sliderDarkBg: #303E54;
+$notificationBg: #D63638;
+
+$feedbackGreen: #6BD03C;
+$feedbackRed: #E76161;
+$feedbackInfo: #FCECC9;
+
+$bankidBlue: #235971;
+$bankidGreen: #00857E;
+
+$statusGreen: #6BD03C;
+$statusYellow: #FFD089;
+$statusRed: #E76161;
+
+$boxShadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+$boxShadowDark: 0px 2px 4px rgba(0, 0, 0, 0.25);
+$lightBoxShadow: 0px 2px 4px rgba(126, 126, 126, 0.12);
+$cardHoverBoxShadow: 0px 2px 12px rgba(0, 0, 0, 0.11);
+
+
+// Keyframes
+
+// Fade in content quickly
+$fadeInContent: fadeInContent 0.4s normal ease-in-out;
+// Fade in content slowly
+$fadeInContentSemiSlow: fadeInContent 0.6s normal ease-in-out;
+// Fade in content even more slowly
+$fadeInContentSlow: fadeInContent 1.5s normal ease-in-out;
+// Fade in content crazy slowly
+$fadeInContentExtraSlow: fadeInContent 2s normal ease-in-out;
+@keyframes fadeInContent {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+}
+
+// Fade in content from right
+$fadeInContentFromRight: fadeInContentFromRight 0.6s normal ease-in-out;
+$fadeInContentFromRightSlow: fadeInContentFromRight 1s normal ease-in-out;
+$fadeInContentFromRightExtraSlow: fadeInContentFromRight 1.8s normal ease-in-out;
+@keyframes fadeInContentFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+}
+
+// Fade in content from left
+$fadeInContentFromLeft: fadeInContentFromLeft 0.6s normal ease-in-out;
+$fadeInContentFromLeftSlow: fadeInContentFromLeft 1s normal ease-in-out;
+$fadeInContentFromLeftExtraSlow: fadeInContentFromLeft 1.8s normal ease-in-out;
+@keyframes fadeInContentFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+}
+
+// Fade in content from bottom
+$fadeInContentFromBottom: fadeInContentFromBottom 0.6s normal ease-in-out;
+$fadeInContentFromBottomSlow: fadeInContentFromBottom 1s normal ease-in-out;
+$fadeInContentFromBottomExtraSlow: fadeInContentFromBottom 1.8s normal ease-in-out;
+@keyframes fadeInContentFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+}
