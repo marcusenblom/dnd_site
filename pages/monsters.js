@@ -1,19 +1,40 @@
 import MonsterPage from 'components/MonsterPage/MonsterPage';
-import { getAllMonsters } from 'lib/monsters';
+import { monstersArray } from 'lib/db/monsters';
+import { getAllMonsters, getMonster } from 'lib/monsters';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Monsters({monsters}) {
+
+  // const all = useRef([]);
+
+  // useEffect(()=>{
+  //   go();
+  // }, []);
+
+  // async function go(){
+    
+  //   for (let i = 0; i < monsters.results.length; i++) {
+  //     const newAll = [...all.current];
+  //     const res = monstersArray[0];
+  //     newAll.push(res);
+  //     all.current = newAll;
+  //     console.log(all.current);
+  //   }
+  // }
   
   return (
-    <MonsterPage monsters={monsters?.results} amount={monsters?.count}/>
+    <MonsterPage monsters={monsters} amount={monsters?.length}/>
   )
 }
 
 export async function getStaticProps({}){
-  const res = await getAllMonsters();
+  // const monsters = await getAllMonsters();
+  const monsters = monstersArray;
+
 
   return{
     props: {
-      monsters: res || null,
+      monsters: monsters || [],
     },
   }
 

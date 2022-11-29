@@ -57,7 +57,8 @@
 @mixin mainButton{
     background-color: $mainColorDark;
     border: 1px solid $mainColorDark;
-    font-family: $mainFontBold;
+    font-family: $mainFont;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 12px 15px 10px;
     color: #ffffff;
@@ -82,7 +83,8 @@
 
 @mixin secondaryButton{
     background-color: #ffffff;
-    font-family: $mainFontBold;
+    font-family: $mainFont;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 12px 15px 10px;
     color: $mainColorDark;
@@ -114,7 +116,8 @@
     background-color: $mainColorCTA;
     color: white;
     border: 1px solid $mainColorCTA;
-    font-family: $mainFontBold;
+    font-family: $mainFont;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 12px 15px 10px;
     text-align: center;
@@ -140,7 +143,8 @@
     background-color: $red;
     color: white;
     border: 1px solid $red;
-    font-family: $mainFontBold;
+    font-family: $mainFont;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 12px 15px 10px;
     text-align: center;

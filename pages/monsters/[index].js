@@ -1,10 +1,8 @@
 import SingleMonster from 'components/SingleMonster/SingleMonster';
-import { getImage } from 'lib/images';
+import { monstersArray } from 'lib/db/monsters';
 import { getAllMonsters, getMonster } from 'lib/monsters';
-import Link from 'next/link';
 
 export default function SingleMonsterPage({monster}) {
-
 
     return (
         <SingleMonster monster={monster}/>
@@ -12,10 +10,11 @@ export default function SingleMonsterPage({monster}) {
 }
 
 export async function getStaticPaths({}){
-    const res = await getAllMonsters();
+    const monsters = await getAllMonsters();
+    // const monsters = monstersArray;
 
     let paths = [];
-    res?.results?.forEach((monster) => {
+    monsters?.results?.forEach((monster) => {
         paths.push({params: { index: monster?.index }});
     });
 
@@ -28,12 +27,12 @@ export async function getStaticPaths({}){
 
 export async function getStaticProps({ params }){
     const res = await getMonster(params?.index);
+    // const res = monstersArray?.find(monster => monster?.index == params?.index);
 
     return{
         props: {
-            monster: res || {},
+            monster: res || undefined,
         },
-        revalidate: 10
     }
 
 }

@@ -1,14 +1,14 @@
 import Link from "next/link";
+import MonsterCard from "./MonsterCard/MonsterCard";
 import styles from "./MonsterPage.module.scss";
 
 export default function MonsterPage({ monsters, count }){
 
     return(
         <section className={styles.main}>
-            <h2>Monsters</h2>
-            <ul>
+            <ul className={styles.monsterList}>
                 {monsters?.length > 0 && monsters?.map((monster, i) => {
-                    return <Link key={i} href={`/monsters/${monster?.index}`}><li>{monster?.name}</li></Link>
+                    return <MonsterCard key={i} index={i} monster={monster}/>
                 })}
             </ul>
         </section>

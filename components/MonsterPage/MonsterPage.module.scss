@@ -2,15 +2,19 @@
 @import '/styles/_variables.scss';
 
 .main{
-    background-color: $mainColorDark;
     height: 100%;
     width: 100%;
     min-height: 100vh;
     min-width: 100vw;
-    color: white;
     padding: 24px 16px;
 
-    h2{
-        font-weight: 400;
+    .monsterList{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 }
