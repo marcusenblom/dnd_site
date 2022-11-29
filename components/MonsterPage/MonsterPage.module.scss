@@ -1,0 +1,16 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.main{
+    background-color: $mainColorDark;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    min-width: 100vw;
+    color: white;
+    padding: 24px 16px;
+
+    h2{
+        font-weight: 400;
+    }
+}
