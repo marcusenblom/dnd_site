@@ -4,6 +4,7 @@ import styles from "./MonsterPage.module.scss";
 
 export default function MonsterPage({ monsters, count }){
 
+    console.log(monsters);
     return(
         <section className={styles.main}>
             <ul className={styles.monsterList}>

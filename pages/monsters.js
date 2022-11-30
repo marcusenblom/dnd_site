@@ -28,9 +28,16 @@ export default function Monsters({monsters}) {
 }
 
 export async function getStaticProps({}){
-  // const monsters = await getAllMonsters();
   const monsters = monstersArray;
+  // const res = await getAllMonsters();
+  // const monsters = [];
 
+  
+  // for (let i = 0; i < res.results.length; i++) {
+  //   const mon = await getMonster(res?.results[i]?.index);
+  //   monsters.push(mon);
+  //   console.log(monsters?.length);
+  // }
 
   return{
     props: {
