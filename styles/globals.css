@@ -10,7 +10,8 @@ body {
   scrollbar-width: none;
 
   overflow-x: hidden;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Spectral SC', serif;
 }
 
 a {
