@@ -1,0 +1,12 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.header{
+    height: 60px;
+    width: 100%;
+    box-shadow: $boxShadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

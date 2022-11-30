@@ -12,6 +12,7 @@ body {
   overflow-x: hidden;
   /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Spectral SC', serif;
+  background: #F9F9F9F9 url("/img/background_texture.png") repeat;
 }
 
 a {

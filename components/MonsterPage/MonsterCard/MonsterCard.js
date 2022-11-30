@@ -11,7 +11,7 @@ export default function MonsterCard({ monster, index }){
                     <img src="/img/card/background/card_bg_metal.png" alt="" />
                 </div>
                 <div className={styles.bgLayerTwo}>
-                    <img src="/img/card/background/card_bg_monster.jpg" alt="" />
+                    <img src={`/img/card/background/card_bg_${monster?.type}.jpg`} alt="" />
                 </div>
 
                 <div className={styles.typeContainer}>

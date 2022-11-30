@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-export default function Home({}) {
+export default function RacesPage({}) {
 
   return (
     <div>
-      DND
+      Races
     </div>
   )
 }
