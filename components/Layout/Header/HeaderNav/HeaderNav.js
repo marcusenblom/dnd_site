@@ -5,8 +5,6 @@ import NavLink from './NavLink/NavLink';
 export default function HeaderNav({}){
     const router = useRouter();
 
-    console.log(router);
-
     return(
         <nav className={styles.nav}>
             <ul className={styles.navItems}>

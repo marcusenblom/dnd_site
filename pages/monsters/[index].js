@@ -5,8 +5,6 @@ import { getAllMonsters, getMonster } from 'lib/monsters';
 
 export default function SingleMonsterPage({monster}) {
 
-    console.log(monster);
-
     return (
         <SingleMonster monster={monster}/>
     )

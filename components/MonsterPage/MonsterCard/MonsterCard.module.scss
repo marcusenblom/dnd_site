@@ -109,8 +109,9 @@
         width: 100%;
         max-height: 0px;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
         overflow: hidden;
         transition: all 0.3s ease-in-out;
         padding: 16px 8px 8px 8px;
@@ -124,15 +125,73 @@
                 font-size: 12px;
                 opacity: 0.85;
                 font-style: italic;
+                margin: 0;
+            }
+        }
+
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .col{
+            display: flex;
+            width: calc(50% - 6px);
+            flex-direction: column;
+        }
+
+        .divider{
+            height: 2px;
+            background-color: $mainColorRed;
+            margin: 10px 0;
+        }
+
+        .key{
+            font-size: 16px;
+            font-weight: 500;
+            color: $mainColorRed;
+            margin-right: 10px;
+        }
+        .value{
+            font-size: 15px;
+            font-weight: 400;
+            margin-right: 10px;
+        }
+
+        .statRow{
+            flex-wrap: wrap;
+
+            @include md{
+                justify-content: space-evenly;
+            }
+        }
+
+        .stat{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 8px;
+
+            .title{
+                font-size: 16px;
+                line-height: 16px;
+                font-weight: 600;
+                color: $mainColorRed;
+            }
+            .value{
+                font-size: 15px;
+                font-weight: 400;
+                white-space: nowrap;
             }
         }
     }
 
     &.showMore{
-        max-height: 600px;
+        max-height: 460px;
 
         .dropDownContent{
-            max-height: 600px;
+            max-height: 400px;
         }
     }
 

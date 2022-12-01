@@ -10,8 +10,6 @@ export default async function handler(req, res) {
       'Content-Type': 'application/json',
     }
   };
-
-  console.log(config.url);
   
   axios(config).then(function (response) {
     res.status(response?.status ? response?.status : 200).json(response?.data);
