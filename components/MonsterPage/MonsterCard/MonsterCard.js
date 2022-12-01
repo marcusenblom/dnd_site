@@ -66,6 +66,25 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
         return str;
     }
 
+    function conditionImmunitiesString(){
+        let str = "";
+        monster?.condition_immunities?.forEach((e, i) => {
+            if(monster?.index == "swarm-of-centipedes"){
+                console.log(e, i);
+            }
+            str = `${str + e?.name}${i != monster?.condition_immunities?.length -1 ? ", " : " "}`;
+        });
+        return str;
+    }
+
+    // function damageResistancesString(){
+    //     let str = "";
+    //     monster?.damage_resistances?.forEach((e, i) => {
+    //         str = `${str + e}${i != monster?.damage_resistances?.length -1 ? ", " : " "}`;
+    //     });
+    //     return str;
+    // }
+
     return(
         <li className={cn(styles.monster, showMore && styles.showMore)}>
 
@@ -116,27 +135,27 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                         <div className={cn(styles.row, styles.statRow)}>
                             <div className={styles.stat}>
                                 <span className={styles.title}>STR</span>
-                                <span className={styles.value}>{calculateStat(strength)}</span>
+                                <span className={styles.statValue}>{calculateStat(strength)}</span>
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles.title}>DEX</span>
-                                <span className={styles.value}>{calculateStat(dexterity)}</span>
+                                <span className={styles.statValue}>{calculateStat(dexterity)}</span>
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles.title}>CON</span>
-                                <span className={styles.value}>{calculateStat(constitution)}</span>
+                                <span className={styles.statValue}>{calculateStat(constitution)}</span>
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles.title}>INT</span>
-                                <span className={styles.value}>{calculateStat(intelligence)}</span>
+                                <span className={styles.statValue}>{calculateStat(intelligence)}</span>
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles.title}>WIS</span>
-                                <span className={styles.value}>{calculateStat(wisdom)}</span>
+                                <span className={styles.statValue}>{calculateStat(wisdom)}</span>
                             </div>
                             <div className={styles.stat}>
                                 <span className={styles.title}>CHA</span>
-                                <span className={styles.value}>{calculateStat(charisma)}</span>
+                                <span className={styles.statValue}>{calculateStat(charisma)}</span>
                             </div>
                         </div>
 
@@ -158,9 +177,17 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                             </div>
                         }
 
+                        {monster?.damage_resistances?.length > 0 &&
                         <div className={styles.row}>
-                            <span className={styles.key}>Dagame Resistances:</span><span className={styles.value}>{damageResistancesString()}</span>
+                            <span className={styles.key}>Damage Resistances:</span><span className={styles.value}>{damageResistancesString()}</span>
                         </div>
+                        }
+
+                        {monster?.condition_immunities?.length > 0 &&
+                        <div className={styles.row}>
+                            <span className={styles.key}>Condition Immunities:</span><span className={styles.value}>{conditionImmunitiesString()}</span>
+                        </div>
+                        }
                         
                     </div>
             </div>
