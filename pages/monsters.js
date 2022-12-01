@@ -29,6 +29,10 @@ export default function Monsters({monsters}) {
 
 export async function getStaticProps({}){
   const monsters = monstersArray;
+  let sorted = monsters?.sort(function(a, b) {
+    return a?.challenge_rating - b?.challenge_rating;
+  });
+  sorted = sorted.slice(100,140);
   // const res = await getAllMonsters();
   // const monsters = [];
 
@@ -41,7 +45,7 @@ export async function getStaticProps({}){
 
   return{
     props: {
-      monsters: monsters || [],
+      monsters: sorted || [],
     },
   }
 
