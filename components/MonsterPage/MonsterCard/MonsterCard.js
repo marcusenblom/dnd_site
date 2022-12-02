@@ -70,7 +70,7 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
         let str = "";
         monster?.condition_immunities?.forEach((e, i) => {
             if(monster?.index == "swarm-of-centipedes"){
-                console.log(e, i);
+                // console.log(e, i);
             }
             str = `${str + e?.name}${i != monster?.condition_immunities?.length -1 ? ", " : " "}`;
         });
