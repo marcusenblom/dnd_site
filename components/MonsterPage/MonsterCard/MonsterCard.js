@@ -6,6 +6,16 @@ import styles from "./MonsterCard.module.scss";
 
 export default function MonsterCard({ monster : {strength, dexterity, constitution, intelligence, wisdom, charisma}, monster, index }){
     const [showMore, setShowMore] = useState(false);
+    const [senses, setSenses] = useState([]);
+    const [damageResistances, setDamageResistances] = useState([]);
+    const [conditionImmunities, setConditionImmunities] = useState([]);
+
+
+    useEffect(()=>{
+        createSenses();
+        createDamageResistances();
+        createConditionImmunities();
+    }, [])
 
     useEffect(()=>{
         if(showMore){
@@ -48,33 +58,37 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
         } )`
     }
 
-    function sensesString(){
-        let str = "";
+    function createSenses(){
+        let arr = [];
         for (const [key, value] of Object.entries(monster?.senses)) {
-            str = str + `${key == "darkvision" ? "Darkvision" : key == "passive_perception" ? "Passive Perception" : key == "blindsight" ? "Blindsight" : key == "tremorsense" ? "Tremorsense" : key == "truesight" ? "Truesight" : ""} ${typeof value == "number" ? `+${value}` : value}, `
+            arr.push(`${key == "darkvision" ? "Darkvision" : key == "passive_perception" ? "Passive Perception" : key == "blindsight" ? "Blindsight" : key == "tremorsense" ? "Tremorsense" : key == "truesight" ? "Truesight" : ""} ${typeof value == "number" && key != "passive_perception" ? `+${value}` : value}, `)
         }
-        str = str.replaceAll("ft.", "feet");
-        str = str.slice(0, str.length - 2);
-        return str;
-    }
-
-    function damageResistancesString(){
-        let str = "";
-        monster?.damage_resistances?.forEach((e, i) => {
-            str = `${str + e}${i != monster?.damage_resistances?.length -1 ? ", " : " "}`;
-        });
-        return str;
-    }
-
-    function conditionImmunitiesString(){
-        let str = "";
-        monster?.condition_immunities?.forEach((e, i) => {
-            if(monster?.index == "swarm-of-centipedes"){
-                // console.log(e, i);
+        let replaced = arr?.map((element, i) => {
+            element = element?.replace("ft.", "feet");
+            if(i == arr?.length - 1){
+                element = element.slice(0, element.length - 2);
             }
-            str = `${str + e?.name}${i != monster?.condition_immunities?.length -1 ? ", " : " "}`;
+            return element;
         });
-        return str;
+        setSenses(replaced);
+    }
+
+    function createDamageResistances(){
+        let arr = [];
+        monster?.damage_resistances?.forEach((e, i) => {
+            let string = `${e}${i != monster?.damage_resistances?.length -1 ? ", " : " "}`;
+            arr.push(string);
+        });
+        setDamageResistances(arr);
+    }
+
+    function createConditionImmunities(){
+        let arr = [];
+        monster?.condition_immunities?.forEach((e, i) => {
+            let string = `${e?.name}${i != monster?.condition_immunities?.length -1 ? ", " : " "}`;
+            arr.push(string);
+        });
+        setConditionImmunities(arr);
     }
 
     // function damageResistancesString(){
@@ -84,6 +98,11 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
     //     });
     //     return str;
     // }
+
+    if(monster?.index == "brass-dragon-wyrmling"){
+        // console.log(monster?.proficiencies?.filter(prof => prof?.proficiency?.index?.includes("saving")));
+        console.log(senses);
+    }
 
     return(
         <li className={cn(styles.monster, showMore && styles.showMore)}>
@@ -161,31 +180,81 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
 
                         <div className={styles.divider}></div>
 
-                        {Object.entries(monster?.proficiencies)?.length > 0 &&
+                        {/* SAVING THROWS */}
+                        {monster?.proficiencies?.length > 0 && monster?.proficiencies?.find(prof => prof?.proficiency?.index?.includes("saving")) &&
                         <div className={styles.row}>
-                            <span className={styles.key}>Skills:</span>
-                            {monster?.proficiencies?.map((prof, i) => {
-                                return <span key={i} className={styles.value}>{prof?.proficiency?.name?.replaceAll("Skill: ", "")} +{prof?.value}{i != monster?.proficiencies?.length - 1 ? ", " : ""}</span>
+                            <span className={styles.key}>Saving Throws:</span>
+                            {monster?.proficiencies?.filter(prof => prof?.proficiency?.index?.includes("saving"))?.map((prof, i) => {
+                                return <span key={i} className={styles.value}>{prof?.proficiency?.name?.replaceAll("Saving Throw: ", "")} +{prof?.value}{i != monster?.proficiencies?.filter(prof => prof?.proficiency?.index?.includes("saving"))?.length - 1 ? ", " : ""}</span>
                             })}
                         </div>
                         }
 
-                        {Object.entries(monster?.senses)?.length > 0 &&
-                            <div className={styles.row}>
-                                <span className={styles.key}>Senses:</span>
-                                <span className={styles.value}>{sensesString()}</span>
-                            </div>
-                        }
-
-                        {monster?.damage_resistances?.length > 0 &&
+                        {/* SKILLS */}
+                        {monster?.proficiencies?.length > 0 && monster?.proficiencies?.find(prof => !prof?.proficiency?.index?.includes("saving")) &&
                         <div className={styles.row}>
-                            <span className={styles.key}>Damage Resistances:</span><span className={styles.value}>{damageResistancesString()}</span>
+                            <span className={styles.key}>Skills:</span>
+                            {monster?.proficiencies?.map((prof, i) => {
+                                if(!prof?.proficiency?.index?.includes("saving")){
+                                    return <span key={i} className={styles.value}>{prof?.proficiency?.name?.replaceAll("Skill: ", "")} +{prof?.value}{i != monster?.proficiencies?.length - 1 ? ", " : ""}</span>
+                                } else {
+                                    return ""
+                                }
+                            })}
                         </div>
                         }
 
+                        {/* SENSES */}
+                        {Object.entries(monster?.senses)?.length > 0 &&
+                            <div className={styles.row}>
+                                <span className={styles.key}>Senses:</span>
+                                {senses?.length > 0 && senses?.map((sense, i)=>{
+                                    return <span key={i} className={styles.value}>{sense}</span>
+                                })}
+                            </div>
+                        }
+
+                        {/* DAMAGE RESISTANCES */}
+                        {monster?.damage_resistances?.length > 0 &&
+                        <div className={styles.row}>
+                            <span className={styles.key}>Damage Resistances:</span>
+                            {damageResistances?.length > 0 && damageResistances?.map((res, i)=>{
+                                return <span key={i} className={styles.value}>{res}</span>
+                            })}
+                        </div>
+                        }
+                        
+                        {/* CONIDTION IMMUNITIES */}
                         {monster?.condition_immunities?.length > 0 &&
                         <div className={styles.row}>
-                            <span className={styles.key}>Condition Immunities:</span><span className={styles.value}>{conditionImmunitiesString()}</span>
+                            <span className={styles.key}>Condition Immunities:</span>
+                            {conditionImmunities?.length > 0 && conditionImmunities?.map((immunity, i)=>{
+                                return <span key={i} className={styles.value}>{immunity}</span>
+                            })}
+                        </div>
+                        }
+
+                        {/* LANGUAGES */}
+                        {monster?.languages?.length > 0 &&
+                        <div className={styles.row}>
+                            <span className={styles.value}><span className={styles.key}>Languages:</span>{monster?.languages}</span>
+                        </div>
+                        }
+
+                        {/* PROFIFIENCY BONUS */}
+                        {monster?.languages?.length > 0 &&
+                        <div className={styles.row}>
+                            <span className={styles.key}>Proficiency Bonus:</span>
+                            <span className={styles.value}>
+                                {
+                                monster?.challenge_rating < 5 ? "+2" : 
+                                monster?.challenge_rating < 9 ? "+3" :
+                                monster?.challenge_rating < 13 ? "+4" :
+                                monster?.challenge_rating < 17 ? "+5" :
+                                monster?.challenge_rating < 21 ? "+6" :
+                                monster?.challenge_rating < 25 ? "+7" :
+                                monster?.challenge_rating < 29 ? "+8" : "+9"}
+                            </span>
                         </div>
                         }
                         

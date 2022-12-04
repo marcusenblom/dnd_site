@@ -11,11 +11,11 @@ export default function SingleMonsterPage({monster}) {
 }
 
 export async function getStaticPaths(){
-    const monsters = await getAllMonsters();
-    // const monsters = monstersArray;
+    // const monsters = await getAllMonsters();
+    const monsters = monstersArray;
 
     let paths = [];
-    monsters?.results?.forEach((monster) => {
+    monsters?.forEach((monster) => {
         paths.push({params: { slug: monster?.index }});
     });
 
@@ -26,14 +26,11 @@ export async function getStaticPaths(){
 };
 
 export async function getStaticProps({ params }){
-
-    console.log(params);
-    // console.log(params);
-    const res = await getMonster(params?.slug);
+    // const res = await getMonster(params?.slug);
     // console.log(res);
     // const damage_type = await apiQuery(res?.actions[0].damage[0].damage_type.url);
 
-    // const res = monstersArray?.find(monster => monster?.index == params?.index);
+    const res = monstersArray?.find(monster => monster?.index == params?.slug);
 
     // res.forEach(element => {
     //     console.log(element?.index);
