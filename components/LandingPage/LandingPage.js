@@ -26,7 +26,7 @@ export default function LandingPage({}){
                 <div className={styles.bg}></div>
 
                 <div className={styles.content}>
-                    <p>“May it be a light to you in dark places, when all other lights go out.”</p>
+                    <p>May the gods guide him back to the light, for he is the greatest of tortles..</p>
                 </div>
             </div>
 

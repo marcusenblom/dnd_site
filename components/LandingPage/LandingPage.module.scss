@@ -55,6 +55,10 @@
                 max-width: 80%;
                 margin: 0;
                 text-shadow: 1px 1px 2px black;
+
+                @include xs{
+                    line-height: 1.3em;
+                }
             }
             
         }
@@ -107,6 +111,10 @@
                 max-width: 80%;
                 margin: 0;
                 text-shadow: 1px 1px 2px black;
+
+                @include xs{
+                    line-height: 1.3em;
+                }
             }
         }
     }
