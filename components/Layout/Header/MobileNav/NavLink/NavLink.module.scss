@@ -1,0 +1,33 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.item{
+    margin: 6px 0;
+    position: relative;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &.active{
+
+        .title{
+            color: $mainColorRed;
+            position: relative;
+
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: -6px;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background-color: $mainColorRed;
+            }
+        }
+    }
+
+    .title{
+        font-size: 20px;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+    }
+}

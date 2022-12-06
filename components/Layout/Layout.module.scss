@@ -1,2 +1,7 @@
 @import '/styles/_mixins.scss';
 @import '/styles/_variables.scss';
+
+.layout{
+    padding-top: $navHeight;
+    position: relative;
+}

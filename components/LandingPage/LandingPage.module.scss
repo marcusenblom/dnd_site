@@ -1,0 +1,39 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+
+    .bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-image: url("/img/backgrounds/bg_one.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        width: 100vw;
+        filter: brightness(90%);
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    .content{
+        min-height: 80vh;
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1{
+            font-size: 3em;
+            font-weight: 400;
+            text-align: center;
+            color: $mainColorRed;
+            filter: brightness(50%);
+        }
+    }
+}

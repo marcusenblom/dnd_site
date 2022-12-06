@@ -32,7 +32,7 @@ export async function getStaticProps({}){
   let sorted = monsters?.sort(function(a, b) {
     return a?.challenge_rating - b?.challenge_rating;
   });
-  sorted = sorted.slice(250,300);
+  sorted = sorted.slice(200,300);
   // const res = await getAllMonsters();
   // const monsters = [];
 

@@ -1,0 +1,122 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.nav{
+    padding: 0 16px;
+    width: 100%;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include sm{
+        display: flex;
+    }
+
+    .togglerContainer{
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .toggler{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+
+            .line{
+                width: 30px;
+                height: 2px;
+                margin: 4px 0;
+                border-radius: 4px;
+                transition: transform 0.4s ease, opacity 0.8s ease;
+                background-color: $mainColorRed;
+            }
+
+            &.show{
+
+                .line{
+                    transition: transform 0.4s ease, opacity 0.2s ease;
+                }
+
+                .lineOne{
+                    transform: rotate(-45deg) translate(-5px,9px);
+                }
+                .lineTwo{
+                    opacity: 0;
+                }
+                .lineThree{
+                    transform: rotate(45deg) translate(-5px,-9px);
+                }
+            }
+        }
+    }
+
+    .logo{
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        img{
+            height: 40px;
+        }
+    }
+
+    .right{
+        width: 30px;
+        height: 30px;
+    }
+
+    .slideOutContent{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 100vh;
+        background: #F9F9F9F9 url("/img/background_texture.png") repeat;
+        transform: translateX(-310px);
+        transition: transform 0.4s ease-in-out;
+        z-index: 998;
+        box-shadow: $boxShadow;
+
+        &.show{
+            transform: translateX(0);
+        }
+
+        .inner{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 58px 16px 16px 16px;
+            position: relative;
+
+            .logo{
+                height: 30px;
+                display: none;
+                align-items: center;
+                position: absolute;
+                top: 14px;
+                right: 14px;
+
+                @media screen and (max-width: 600px){
+                    display: flex;
+                }
+        
+                img{
+                    height: 100%;
+                }
+            }
+
+            .navItems{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 0;
+                padding: 22px 0;
+            }
+        }
+    }
+}

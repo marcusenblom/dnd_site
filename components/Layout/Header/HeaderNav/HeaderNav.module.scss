@@ -3,6 +3,26 @@
 
 .nav{
     padding: 0 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @include sm{
+        display: none;
+    }
+
+    .logo{
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        height: 40px;
+        transform: translateY(-50%);
+
+        img{
+            height: 100%;
+        }
+    }
 
     .navItems{
         list-style: none;

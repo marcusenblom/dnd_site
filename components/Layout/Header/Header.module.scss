@@ -2,11 +2,15 @@
 @import '/styles/_variables.scss';
 
 .header{
-    height: 60px;
+    height: $navHeight;
     width: 100%;
     box-shadow: $boxShadow;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #F9F9F9F9 url("/img/background_texture.png") repeat;
+    z-index: 999;
 }

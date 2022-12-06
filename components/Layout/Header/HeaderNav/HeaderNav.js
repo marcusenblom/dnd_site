@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './HeaderNav.module.scss';
 import NavLink from './NavLink/NavLink';
@@ -7,6 +8,11 @@ export default function HeaderNav({}){
 
     return(
         <nav className={styles.nav}>
+
+            <div className={styles.logo}>
+                <Link href="/"><img src="/logo.png" alt="logga" /></Link>
+            </div>
+            
             <ul className={styles.navItems}>
                 <NavLink href="/encounter" label="Encounter" active={router?.pathname?.includes("/encounter")}/>
                 <NavLink href="/monsters" label="Monsters" active={router?.pathname?.includes("/monsters")}/>

@@ -7,11 +7,17 @@ export default function MonsterPage({ monsters, count }){
 
     return(
         <section className={styles.main}>
-            <ul className={styles.monsterList}>
-                {monsters?.length > 0 && monsters?.map((monster, i) => {
-                    return <MonsterCard key={i} index={i} monster={monster}/>
-                })}
-            </ul>
+
+            <div className={styles.bg}></div>
+            
+            <div className={styles.content}>
+                <ul className={styles.monsterList}>
+                    {monsters?.length > 0 && monsters?.map((monster, i) => {
+                        return <MonsterCard key={i} index={i} monster={monster}/>
+                    })}
+                </ul>
+            </div>
+
         </section>
     )
 }
