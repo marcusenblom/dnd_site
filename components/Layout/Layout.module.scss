@@ -4,4 +4,6 @@
 .layout{
     padding-top: $navHeight;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
