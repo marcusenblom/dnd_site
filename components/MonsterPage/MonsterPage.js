@@ -9,9 +9,6 @@ export default function MonsterPage({ monsters, count }){
     const router = useRouter();
     const [perPage, setPerPage] = useState(50);
     const [monstersToShow, setMonstersToShow] = useState([]);
-    const [filterData, setFilterData] = useState({
-
-    });
 
     useEffect(()=>{
         let startIndex = 149;
@@ -19,10 +16,16 @@ export default function MonsterPage({ monsters, count }){
         setMonstersToShow(sliced);
     }, []);
 
+    useEffect(()=>{
+        filter();
+    }, [router])
+
     function filter(){
-        let startIndex = 149;
-        let sliced = monsters?.slice(startIndex, startIndex + 50);
-        setMonstersToShow(sliced);
+        // let startIndex = 149;
+        // let sliced = monsters?.slice(startIndex, startIndex + 50);
+        // setMonstersToShow(sliced);
+
+        // let match = monsters?.filter(mon => mon?.type)
     }
 
     return(

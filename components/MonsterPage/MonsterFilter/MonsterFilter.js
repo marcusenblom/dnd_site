@@ -1,8 +1,55 @@
 import styles from './MonsterFilter.module.scss';
 import cn from 'classnames';
 import MonsterType from './MonsterType/MonsterType';
+import { useRouter } from 'next/router';
 
 export default function MonsterFilter({}){
+    const router = useRouter();
+
+    function addType(monsterType){
+        let types = router?.query?.type;
+        let newTypes;
+        if(!types){
+            newTypes = monsterType;
+        } else if(typeof types == "string"){
+            newTypes = [router?.query?.type, monsterType];
+        } else {
+            let newArr = [...types];
+            newArr.push(monsterType);
+            newTypes = newArr;
+        }
+
+        router.push({
+            pathname: "/monsters",
+            query: {...router?.query, type: newTypes}
+        });
+    }
+
+    function removeType(monsterType){
+        let types = router?.query?.type;
+        console.log(types);
+        let newTypes;
+        if(!types){
+            return;
+        } else if(typeof types == "string"){
+            newTypes = "";
+        } else {
+            let newArr = [...types];
+            newTypes = newArr.filter(type => type != monsterType);
+        }
+
+        let newQuery = {...router?.query};
+        delete newQuery?.type;
+
+        if(newTypes || newTypes?.length > 0){
+            newQuery.type = newTypes;
+        }
+
+        router.push({
+            pathname: "/monsters",
+            query: newQuery
+        });
+    }
 
     return(
         <div className={styles.filterSection}>
@@ -11,20 +58,20 @@ export default function MonsterFilter({}){
                     <p>Monster types</p>
                 </div>
                 <div className={styles.inner}>
-                    <MonsterType name="Aberration" imgUrl="/img/placeholders/aberration.jpg" active={true}/>
-                    <MonsterType name="Beast" imgUrl="/img/placeholders/beast.jpg"/>
-                    <MonsterType name="Celestial" imgUrl="/img/placeholders/celestial.jpg"/>
-                    <MonsterType name="Construct" imgUrl="/img/placeholders/construct.jpg" active={true}/>
-                    <MonsterType name="Dragon" imgUrl="/img/placeholders/dragon.jpg" active={true}/>
-                    <MonsterType name="Elemental" imgUrl="/img/placeholders/elemental.jpg"/>
-                    <MonsterType name="Fey" imgUrl="/img/placeholders/fey.jpg"/>
-                    <MonsterType name="Fiend" imgUrl="/img/placeholders/fiend.jpg"/>
-                    <MonsterType name="Humanoid" imgUrl="/img/placeholders/humanoid.jpg"/>
-                    <MonsterType name="Giant" imgUrl="/img/placeholders/giant.jpg"/>
-                    <MonsterType name="Monstrosity" imgUrl="/img/placeholders/monstrosity.jpg"/>
-                    <MonsterType name="Ooze" imgUrl="/img/placeholders/ooze.jpg"/>
-                    <MonsterType name="Plant" imgUrl="/img/placeholders/plant.jpg"/>
-                    <MonsterType name="Undead" imgUrl="/img/placeholders/undead.jpg"/>
+                    <MonsterType name="Aberration" type={"aberration"} imgUrl="/img/placeholders/aberration.jpg" active={router?.query?.type?.includes("aberration")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Beast" type={"beast"} imgUrl="/img/placeholders/beast.jpg" active={router?.query?.type?.includes("beast")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Celestial" type={"celestial"} imgUrl="/img/placeholders/celestial.jpg" active={router?.query?.type?.includes("celestial")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Construct" type={"construct"} imgUrl="/img/placeholders/construct.jpg" active={router?.query?.type?.includes("construct")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Dragon" type={"dragon"} imgUrl="/img/placeholders/dragon.jpg" active={router?.query?.type?.includes("dragon")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Elemental" type={"elemental"} imgUrl="/img/placeholders/elemental.jpg" active={router?.query?.type?.includes("elemental")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Fey" type={"fey"} imgUrl="/img/placeholders/fey.jpg" active={router?.query?.type?.includes("fey")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Fiend" type={"fiend"} imgUrl="/img/placeholders/fiend.jpg" active={router?.query?.type?.includes("fiend")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Humanoid" type={"humanoid"} imgUrl="/img/placeholders/humanoid.jpg" active={router?.query?.type?.includes("humanoid")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Giant" type={"giant"} imgUrl="/img/placeholders/giant.jpg" active={router?.query?.type?.includes("giant")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Monstrosity" type={"monstrosity"} imgUrl="/img/placeholders/monstrosity.jpg" active={router?.query?.type?.includes("monstrosity")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Ooze" type={"ooze"} imgUrl="/img/placeholders/ooze.jpg" active={router?.query?.type?.includes("ooze")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Plant" type={"plant"} imgUrl="/img/placeholders/plant.jpg" active={router?.query?.type?.includes("plant")} addType={addType} removeType={removeType}/>
+                    <MonsterType name="Undead" type={"undead"} imgUrl="/img/placeholders/undead.jpg" active={router?.query?.type?.includes("undead")} addType={addType} removeType={removeType}/>
                 </div>
             </div>
 
