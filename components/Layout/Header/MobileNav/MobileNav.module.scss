@@ -13,6 +13,19 @@
         display: flex;
     }
 
+    &.transparent{
+        .toggler{
+            .line{
+                background-color: white!important;
+            }
+            &.show{
+                .line{
+                    background-color: $mainColorRed!important;
+                }
+            }
+        }
+    }
+
     .togglerContainer{
         height: 100%;
         display: flex;

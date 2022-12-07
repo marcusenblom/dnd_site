@@ -12,6 +12,14 @@
         display: none;
     }
 
+    &.transparent{
+        a{
+            span{
+                color: white!important;
+            }
+        }
+    }
+
     .logo{
         position: absolute;
         left: 16px;

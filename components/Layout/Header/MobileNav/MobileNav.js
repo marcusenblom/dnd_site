@@ -4,7 +4,7 @@ import styles from './MobileNav.module.scss';
 import NavLink from './NavLink/NavLink';
 import cn from 'classnames';
 
-export default function MobileNav({}){
+export default function MobileNav({ transparent }){
     const router = useRouter();
     const [show, setShow] = useState(false);
 
@@ -13,7 +13,7 @@ export default function MobileNav({}){
     }, [router])
 
     return(
-        <nav className={styles.nav}>
+        <nav className={cn(styles.nav, transparent && styles.transparent)}>
             <div className={styles.togglerContainer}>
                 <div className={cn(styles.toggler, show && styles.show)} onClick={()=>{setShow(!show)}}>
                     <div className={cn(styles.line, styles.lineOne)}></div>
