@@ -1,0 +1,55 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.filterSection{
+    width: 100%;
+    padding: 22px 0;
+    // background-image: url("/img/backgrounds/bg_paper.jpg");
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+
+    .divider{
+        height: 2px;
+        background-color: $dirtyGold;
+        margin: 10px 0;
+    }
+
+    .typeList{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .header{
+            margin-bottom: 12px;
+
+            p{
+                font-size: 1em;
+                color: $mainColorRed;
+                font-weight: 600;
+                margin: 0;
+            }
+        }
+
+        .inner{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            @include sm{
+                width: calc(100% + 32px + 32px);
+                margin-left: -16px;
+                padding: 6px 16px;
+                overflow-x: scroll;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+
+                @include hideScrollBar;
+            }
+        }
+
+        
+    }
+}

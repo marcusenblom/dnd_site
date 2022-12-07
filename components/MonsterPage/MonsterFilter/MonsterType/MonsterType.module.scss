@@ -1,0 +1,62 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+
+    &.active{
+        opacity: 1;
+
+        .icon{
+            img{
+                border: 2px solid $mainColorRed;
+            }
+        }
+    }
+
+    &:hover{
+        opacity: 1;
+    }
+
+    .icon{
+        height: 53px;
+        width: 53px;
+        margin-bottom: 4px;
+
+        img{
+            height: 100%;
+            width: 100%;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    }
+
+    .name{
+        text-align: center;
+        margin: 0;
+        font-size: 14px;
+        width: 100px;
+        font-weight: 500;
+    }
+
+    @include sm{
+
+        // .icon{
+        //     height: 43px;
+        //     width: 4px;
+        // }
+
+        .name{
+            font-size: 13px;
+            width: 90px;
+        }
+    }
+}

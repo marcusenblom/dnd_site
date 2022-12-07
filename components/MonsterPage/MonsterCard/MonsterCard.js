@@ -206,7 +206,7 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
 
                         {/* SENSES */}
                         {Object.entries(monster?.senses)?.length > 0 &&
-                            <div className={styles.row}>
+                            <div className={cn(styles.row, styles.mb)}>
                                 <span className={styles.key}>Senses:</span>
                                 {senses?.length > 0 && senses?.map((sense, i)=>{
                                     return <span key={i} className={styles.value}>{sense}</span>
@@ -216,7 +216,7 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
 
                         {/* DAMAGE RESISTANCES */}
                         {monster?.damage_resistances?.length > 0 &&
-                        <div className={styles.row}>
+                        <div className={cn(styles.row, styles.mb)}>
                             <span className={styles.key}>Damage Resistances:</span>
                             {damageResistances?.length > 0 && damageResistances?.map((res, i)=>{
                                 return <span key={i} className={styles.value}>{res}</span>
@@ -226,7 +226,7 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                         
                         {/* CONIDTION IMMUNITIES */}
                         {monster?.condition_immunities?.length > 0 &&
-                        <div className={styles.row}>
+                        <div className={cn(styles.row, styles.mb)}>
                             <span className={styles.key}>Condition Immunities:</span>
                             {conditionImmunities?.length > 0 && conditionImmunities?.map((immunity, i)=>{
                                 return <span key={i} className={styles.value}>{immunity}</span>
@@ -236,14 +236,14 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
 
                         {/* LANGUAGES */}
                         {monster?.languages?.length > 0 &&
-                        <div className={styles.row}>
+                        <div className={cn(styles.row, styles.mb)}>
                             <span className={styles.value}><span className={styles.key}>Languages:</span>{monster?.languages}</span>
                         </div>
                         }
 
                         {/* PROFIFIENCY BONUS */}
                         {monster?.languages?.length > 0 &&
-                        <div className={styles.row}>
+                        <div className={cn(styles.row, styles.mb)}>
                             <span className={styles.key}>Proficiency Bonus:</span>
                             <span className={styles.value}>
                                 {
