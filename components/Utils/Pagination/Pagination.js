@@ -3,8 +3,6 @@ import cn from 'classnames';
 
 export default function Pagination({ pages, currentPage, setPage, hideOnMobile }){
 
-    console.log(currentPage);
-
     return(
         <div className={cn(styles.pagination, hideOnMobile && styles.hideOnMobile)}>
             {pages?.length > 1 && pages?.map((p) => {

@@ -149,6 +149,23 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                             <span className={styles.key}>Speed:</span><span className={styles.value}>{speedString()}</span>
                         </div>
 
+                        {/* PROFIFIENCY BONUS */}
+                        {monster?.languages?.length > 0 &&
+                        <div className={cn(styles.row, styles.mb)}>
+                            <span className={styles.key}>Proficiency Bonus:</span>
+                            <span className={styles.value}>
+                                {
+                                monster?.challenge_rating < 5 ? "+2" : 
+                                monster?.challenge_rating < 9 ? "+3" :
+                                monster?.challenge_rating < 13 ? "+4" :
+                                monster?.challenge_rating < 17 ? "+5" :
+                                monster?.challenge_rating < 21 ? "+6" :
+                                monster?.challenge_rating < 25 ? "+7" :
+                                monster?.challenge_rating < 29 ? "+8" : "+9"}
+                            </span>
+                        </div>
+                        }
+
                         <div className={styles.divider}></div>
 
                         <div className={cn(styles.row, styles.statRow)}>
@@ -238,23 +255,6 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                         {monster?.languages?.length > 0 &&
                         <div className={cn(styles.row, styles.mb)}>
                             <span className={styles.value}><span className={styles.key}>Languages:</span>{monster?.languages}</span>
-                        </div>
-                        }
-
-                        {/* PROFIFIENCY BONUS */}
-                        {monster?.languages?.length > 0 &&
-                        <div className={cn(styles.row, styles.mb)}>
-                            <span className={styles.key}>Proficiency Bonus:</span>
-                            <span className={styles.value}>
-                                {
-                                monster?.challenge_rating < 5 ? "+2" : 
-                                monster?.challenge_rating < 9 ? "+3" :
-                                monster?.challenge_rating < 13 ? "+4" :
-                                monster?.challenge_rating < 17 ? "+5" :
-                                monster?.challenge_rating < 21 ? "+6" :
-                                monster?.challenge_rating < 25 ? "+7" :
-                                monster?.challenge_rating < 29 ? "+8" : "+9"}
-                            </span>
                         </div>
                         }
                         

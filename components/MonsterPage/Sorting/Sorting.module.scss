@@ -22,6 +22,35 @@
             color: $mainColorRed;
             text-align: left;
             margin: 0;
+            position: relative;
+
+            &::after{
+                content: "";
+                position: absolute;
+                right: -12px;
+                top: calc(50%);
+                margin-top: -1px;
+                transform: translateY(-50%) rotate(135deg);
+                background: transparent;
+                height: 4px;
+                width: 4px;
+                border-top: 2px solid $mainColorRed;
+                border-right: 2px solid $mainColorRed;
+                display: none;
+                transition: all 0.2s ease-in-out;
+            }
+            &.up{
+                &::after{
+                    transform: translateY(-50%) rotate(-45deg);
+                    margin-top: 1px;
+                }
+            }
+
+            &.active{
+                &::after{
+                    display: block;
+                }
+            }
             
             &:hover{
                 cursor: pointer;
@@ -43,8 +72,7 @@
 
     .cr{
         padding-left: 8px;
-        margin-right: 12px;
-        width: 42px;
+        margin-right: 26px;
     }
     .size{
         margin-left: 16px;
