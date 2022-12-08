@@ -57,7 +57,7 @@ export default function MonsterFilter({}){
                 <div className={styles.header}>
                     <p>Monster types</p>
                 </div>
-                <div className={styles.inner}>
+                <div className={styles.inner} id="monsterList">
                     <MonsterType name="Aberration" type={"aberration"} imgUrl="/img/placeholders/aberration.jpg" active={router?.query?.type?.includes("aberration")} addType={addType} removeType={removeType}/>
                     <MonsterType name="Beast" type={"beast"} imgUrl="/img/placeholders/beast.jpg" active={router?.query?.type?.includes("beast")} addType={addType} removeType={removeType}/>
                     <MonsterType name="Celestial" type={"celestial"} imgUrl="/img/placeholders/celestial.jpg" active={router?.query?.type?.includes("celestial")} addType={addType} removeType={removeType}/>
