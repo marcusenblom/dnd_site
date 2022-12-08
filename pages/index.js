@@ -6,3 +6,10 @@ export default function Home({}) {
     <LandingPage />
   )
 }
+
+export async function getStaticProps({}){
+
+  return{
+    props: {}
+  };
+}
