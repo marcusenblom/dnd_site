@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import MonsterCard from "./MonsterCard/MonsterCard";
 import MonsterFilter from "./MonsterFilter/MonsterFilter";
 import styles from "./MonsterPage.module.scss";
+import MonsterSorting from "./Sorting/Sorting";
 
 export default function MonsterPage({ monsters, count }){
     const router = useRouter();
@@ -67,8 +68,9 @@ export default function MonsterPage({ monsters, count }){
 
                 <MonsterFilter />
 
-                <Pagination currentPage={page} pages={pages} setPage={changePage}/>
+                <Pagination currentPage={page} pages={pages} setPage={changePage} hideOnMobile={true}/>
 
+                <MonsterSorting />
                 <ul className={styles.monsterList}>
                     {monstersToShow?.length > 0 && monstersToShow?.slice((page - 1 )* perPage, ((page - 1 )* perPage) + perPage).map((monster, i) => {
                         return <MonsterCard key={monster?.index} index={i} monster={monster}/>
