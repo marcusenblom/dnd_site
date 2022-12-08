@@ -106,8 +106,6 @@ export default function MonsterPage({ monsters, count }){
 
                 <MonsterFilter />
 
-                <Pagination currentPage={page} pages={pages} setPage={changePage} hideOnMobile={true}/>
-
                 <MonsterSorting sort={sortMonsters} active={sortedBy}/>
                 <ul className={styles.monsterList}>
                     {monstersToShow?.length > 0 && monstersToShow?.slice((page - 1 )* perPage, ((page - 1 )* perPage) + perPage).map((monster, i) => {
