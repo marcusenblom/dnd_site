@@ -104,6 +104,31 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
         console.log(senses);
     }
 
+    function actionUsageString(name, usage){
+        if(!usage){
+            return `${name}: `
+        } else {
+            let str = "";
+
+            switch (usage?.type) {
+                case "per day":
+                    str = `${name} (${usage?.times} / Day): `
+                    break;
+                case "recharge on roll":
+                    str = `${name} (Recharge ${usage?.min_value} - 6): `
+                    break;
+                case "recharge after rest":
+                    str = `${name} (Recharges after Short or Long rest): `
+                    break;
+                default:
+                    str = `${name}. `
+                    break;
+            }
+
+            return str;
+        }
+    }
+
     return(
         <li className={cn(styles.monster, showMore && styles.showMore)}>
 
@@ -257,7 +282,49 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                             <span className={styles.value}><span className={styles.key}>Languages:</span>{monster?.languages}</span>
                         </div>
                         }
+
+                        {monster?.special_abilities?.length > 0 && 
+                        <>
+                        <div className={styles.divider}></div>
+                        <div className={styles.mbDivider}></div>
+                        </>
+                        }
+                        {monster?.special_abilities?.length > 0 && monster?.special_abilities?.map((abi, i) => {
+                            return <div key={abi?.name} className={cn(styles.row, styles.mb2)}>
+                                <span className={cn(styles.inlineKey, styles.small, styles.black)}>{abi?.name}: <span className={cn(styles.value, styles.small, styles.prewrap)}>{abi?.desc}</span></span>
+                            </div>
+                        })}
                         
+                    </div>
+
+                    {/* ACTIONS */}
+                    <div className={styles.col}>
+
+                        <div className={styles.headerContainer}>
+                            <h3 className={cn(styles.header, styles.borderBottom)}>Actions</h3>
+                        </div>
+                        {monster?.actions?.length > 0 && monster?.actions?.map((abi, i) => {
+                            return <div key={abi?.name} className={cn(styles.row, styles.mb2)}>
+                                <span className={cn(styles.inlineKey, styles.small)}>{actionUsageString(abi?.name, abi?.usage)}
+                                <span className={cn(styles.value, styles.small, styles.prewrap)}>{abi?.desc}</span></span>
+                            </div>
+                        })}
+
+                        {monster?.legendary_actions?.length > 0 &&
+                        <>
+                        <div className={styles.mbDivider}></div>
+                        <div className={styles.headerContainer}>
+                            <h3 className={cn(styles.header, styles.borderBottom)}>Legendary Actions</h3>
+                        </div>
+                        <div className={cn(styles.row, styles.mb2)}><span className={cn(styles.value, styles.small, styles.prewrap)}>The {monster?.name} can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The aboleth regains spent legendary actions at the start of its turn.</span></div>
+                        {monster?.legendary_actions?.map((abi, i) => {
+                            return <div key={abi?.name} className={cn(styles.row, styles.mb2)}>
+                                <span className={cn(styles.inlineKey, styles.small)}>{abi?.name}: <span className={cn(styles.value, styles.small, styles.prewrap)}>{abi?.desc}</span></span>
+                            </div>
+                        })}
+                        </>
+                        }
+
                     </div>
             </div>
 

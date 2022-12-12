@@ -18,6 +18,14 @@ export default function MonsterPage({ monsters, count }){
 
     useEffect(()=>{
         filter();
+
+        // monsters.forEach(mon => {
+        //     mon?.actions?.forEach(ac => {
+        //         if(ac?.usage != undefined){
+        //             console.log(ac?.usage);
+        //         }
+        //     });
+        // });
     }, [router]);
 
     function filter(){
