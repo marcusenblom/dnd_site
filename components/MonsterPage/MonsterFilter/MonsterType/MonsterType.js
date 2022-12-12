@@ -1,10 +1,12 @@
 import styles from './MonsterType.module.scss';
 import cn from 'classnames';
 
-export default function MonsterType({ imgUrl, name, active, type, addType, removeType }){
+export default function MonsterType({ imgUrl, name, active, type, addType, removeType, removeAll }){
 
     function toggle(){
-        if(active){
+        if(type == "all"){
+            removeAll();
+        } else if(active){
             removeType(type);
         } else {
             addType(type);

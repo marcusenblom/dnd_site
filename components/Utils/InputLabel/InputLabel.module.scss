@@ -1,0 +1,39 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+.customInputLabel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    .tooltipContainer {
+        display: flex;
+        align-items: center;
+        // height: 30px;
+        margin-bottom: 10px;
+    
+        label {
+            margin-bottom: 0;
+            font-size: 15px;
+            line-height: 15px;
+            color: $mainColorRed;
+            font-weight: 600;
+
+            &.white{
+                color: white;
+            }
+
+            &.large{
+                font-size: 17px;
+            }
+
+            &.bold{
+                font-weight: 700;
+            }
+            .required{
+                margin-left: 2px;
+                line-height: 15px;
+            }
+        }
+    }
+}

@@ -11,7 +11,6 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
     const [damageResistances, setDamageResistances] = useState([]);
     const [conditionImmunities, setConditionImmunities] = useState([]);
 
-
     useEffect(()=>{
         createSpeed();
         createSenses();
@@ -27,12 +26,6 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
     }, [showMore]);
 
     function createSpeed(){
-        // let str = "";
-        // for (const [key, value] of Object.entries(monster?.speed)) {
-        //     str = str + `${key == "walk" ? "" : key.toString()} ${value}. `
-        // }
-        // str = str.replaceAll("ft.", "feet")
-        // return str;
         let arr = [];
         for (const [key, value] of Object.entries(monster?.speed)) {
             let str = `${key == "walk" ? "" : key.toString()} ${value}. `;
@@ -99,19 +92,6 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
             arr.push(string);
         });
         setConditionImmunities(arr);
-    }
-
-    // function damageResistancesString(){
-    //     let str = "";
-    //     monster?.damage_resistances?.forEach((e, i) => {
-    //         str = `${str + e}${i != monster?.damage_resistances?.length -1 ? ", " : " "}`;
-    //     });
-    //     return str;
-    // }
-
-    if(monster?.index == "brass-dragon-wyrmling"){
-        // console.log(monster?.proficiencies?.filter(prof => prof?.proficiency?.index?.includes("saving")));
-        console.log(senses);
     }
 
     function actionUsageString(name, usage){

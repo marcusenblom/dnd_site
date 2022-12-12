@@ -15,26 +15,32 @@ export default function MonsterPage({ monsters, count }){
     const [perPage, setPerPage] = useState(30);
     const [sortedBy, setSortedBy] = useState("cr");
     const [monstersToShow, setMonstersToShow] = useState([]);
+    const [searchWord, setSearchWord] = useState("");
 
     useEffect(()=>{
         filter();
-
-        monsters.forEach(mon => {
-            mon?.special_abilities?.forEach(ac => {
-                if(ac?.usage != undefined){
-                    console.log(mon?.name);
-                    console.log(ac?.usage);
-                }
-            });
-        });
-    }, [router]);
+    }, [router, searchWord]);
 
     function filter(){
         let queries = router?.query;
-        let matches = [];
+        let matches = monsters;
 
-        matches = monsters?.filter(mon => !queries?.type || queries?.type?.includes(mon?.type));
+        if(queries?.type){
+            matches = monsters?.filter(mon => !queries?.type || queries?.type?.includes(mon?.type));
+        }
+        if(queries?.crMin){
+            matches = matches?.filter(mon => parseFloat(queries?.crMin) <= mon?.challenge_rating);
+        }
+        if(queries?.crMax){
+            matches = matches?.filter(mon => parseFloat(queries?.crMax) >= mon?.challenge_rating);
+        }
+        if(searchWord?.length > 0){
+            matches = matches?.filter(mon =>
+                mon?.name?.toLowerCase()?.includes(searchWord?.toLowerCase()?.trim())
+            );
+        }
 
+        // Create pages after filtering in done
         let totalPages = Math.ceil(matches?.length / perPage);
         let pageNumbers = [];
 
@@ -113,9 +119,14 @@ export default function MonsterPage({ monsters, count }){
             
             <div className={styles.content}>
 
-                <MonsterFilter />
+                <MonsterFilter searchWord={searchWord} setSearchWord={setSearchWord}/>
 
                 <MonsterSorting sort={sortMonsters} active={sortedBy}/>
+                {monstersToShow?.length < 1 &&
+                <div className={styles.empty}>
+                    <p>Your search does not match any monster</p>
+                </div>
+                }
                 <ul className={styles.monsterList}>
                     {monstersToShow?.length > 0 && monstersToShow?.slice((page - 1 )* perPage, ((page - 1 )* perPage) + perPage).map((monster, i) => {
                         return <MonsterCard key={monster?.index} index={i} monster={monster}/>

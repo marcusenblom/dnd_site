@@ -52,4 +52,30 @@
 
         
     }
+
+    .inputWrapper{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 12px 0 0 0;
+        margin-bottom: -12px;
+
+        .col{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .input{
+            width: 240px;
+            margin-right: 12px;
+            margin-bottom: 12px;
+
+            &.short{
+                width: 80px;
+            }
+        }
+    }
 }
