@@ -342,6 +342,14 @@
         .dropDownContent{
             max-height: 1300px;
         }
+
+        @include sm{
+            max-height: 2360px;
+
+            .dropDownContent{
+                max-height: 2300px;
+            }
+        }
     }
 
 }
