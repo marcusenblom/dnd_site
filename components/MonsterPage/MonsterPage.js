@@ -19,13 +19,14 @@ export default function MonsterPage({ monsters, count }){
     useEffect(()=>{
         filter();
 
-        // monsters.forEach(mon => {
-        //     mon?.actions?.forEach(ac => {
-        //         if(ac?.usage != undefined){
-        //             console.log(ac?.usage);
-        //         }
-        //     });
-        // });
+        monsters.forEach(mon => {
+            mon?.special_abilities?.forEach(ac => {
+                if(ac?.usage != undefined){
+                    console.log(mon?.name);
+                    console.log(ac?.usage);
+                }
+            });
+        });
     }, [router]);
 
     function filter(){

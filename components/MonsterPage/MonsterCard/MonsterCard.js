@@ -121,7 +121,26 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                     str = `${name} (Recharges after Short or Long rest): `
                     break;
                 default:
-                    str = `${name}. `
+                    str = `${name}: `
+                    break;
+            }
+
+            return str;
+        }
+    }
+
+    function specialAbilitiesUsageString(name, usage){
+        if(!usage){
+            return `${name}: `
+        } else {
+            let str = "";
+
+            switch (usage?.type) {
+                case "per day":
+                    str = `${name} (${usage?.times} / Day): `
+                    break;
+                default:
+                    str = `${name}: `
                     break;
             }
 
@@ -291,7 +310,7 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                         }
                         {monster?.special_abilities?.length > 0 && monster?.special_abilities?.map((abi, i) => {
                             return <div key={abi?.name} className={cn(styles.row, styles.mb2)}>
-                                <span className={cn(styles.inlineKey, styles.small, styles.black)}>{abi?.name}: <span className={cn(styles.value, styles.small, styles.prewrap)}>{abi?.desc}</span></span>
+                                <span className={cn(styles.inlineKey, styles.small, styles.black)}>{specialAbilitiesUsageString(abi?.name, abi?.usage)}<span className={cn(styles.value, styles.small, styles.prewrap)}>{abi?.desc}</span></span>
                             </div>
                         })}
                         
