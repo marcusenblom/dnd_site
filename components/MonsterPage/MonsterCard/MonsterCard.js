@@ -7,14 +7,17 @@ import styles from "./MonsterCard.module.scss";
 export default function MonsterCard({ monster : {strength, dexterity, constitution, intelligence, wisdom, charisma}, monster, index }){
     const [showMore, setShowMore] = useState(false);
     const [senses, setSenses] = useState([]);
+    const [movementSpeeds, setMovementSpeeds] = useState([]);
     const [damageResistances, setDamageResistances] = useState([]);
     const [conditionImmunities, setConditionImmunities] = useState([]);
 
 
     useEffect(()=>{
+        createSpeed();
         createSenses();
         createDamageResistances();
         createConditionImmunities();
+
     }, [])
 
     useEffect(()=>{
@@ -23,13 +26,20 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
         }
     }, [showMore]);
 
-    function speedString(){
-        let str = "";
+    function createSpeed(){
+        // let str = "";
+        // for (const [key, value] of Object.entries(monster?.speed)) {
+        //     str = str + `${key == "walk" ? "" : key.toString()} ${value}. `
+        // }
+        // str = str.replaceAll("ft.", "feet")
+        // return str;
+        let arr = [];
         for (const [key, value] of Object.entries(monster?.speed)) {
-            str = str + `${key == "walk" ? "" : key.toString()} ${value}. `
+            let str = `${key == "walk" ? "" : key.toString()} ${value}. `;
+            str = str.replaceAll("ft.", "feet");
+            arr.push(str)
         }
-        str = str.replaceAll("ft.", "feet")
-        return str;
+        setMovementSpeeds(arr);
     }
 
     function calculateStat(stat){
@@ -190,7 +200,11 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
                         </div>
 
                         <div className={styles.row}>
-                            <span className={styles.key}>Speed:</span><span className={styles.value}>{speedString()}</span>
+                            <span className={styles.key}>Speed:</span>
+                            {movementSpeeds?.length > 0 && movementSpeeds?.map((mov, i)=>{
+                                    return <span key={i} className={styles.value}>{mov}</span>
+                            })}
+                            {/* <span className={styles.value}>{speedString()}</span> */}
                         </div>
 
                         {/* PROFIFIENCY BONUS */}
