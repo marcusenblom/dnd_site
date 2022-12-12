@@ -3,7 +3,7 @@ import { monstersArray } from 'lib/db/monsters';
 import { getAllMonsters, getMonster } from 'lib/monsters';
 import { useEffect, useRef, useState } from 'react';
 
-export default function Monsters({monsters}) {
+export default function Monsters({}) {
 
   // const all = useRef([]);
 
@@ -23,15 +23,15 @@ export default function Monsters({monsters}) {
   // }
   
   return (
-    <MonsterPage monsters={monsters} amount={monsters?.length}/>
+    <MonsterPage monsters={monstersArray} amount={monstersArray?.length}/>
   )
 }
 
 export async function getStaticProps({}){
-  const monsters = monstersArray;
-  let sorted = monsters?.sort(function(a, b) {
-    return a?.challenge_rating - b?.challenge_rating;
-  });
+  // const monsters = monstersArray;
+  // let sorted = monsters?.sort(function(a, b) {
+  //   return a?.challenge_rating - b?.challenge_rating;
+  // });
   // sorted = sorted?.filter(mon => mon?.actions?.find(ac => ac?.usage != undefined))
   // sorted = sorted.slice(200,300);
   // const res = await getAllMonsters();
@@ -46,7 +46,7 @@ export async function getStaticProps({}){
 
   return{
     props: {
-      monsters: sorted || [],
+      // monsters: sorted || [],
     },
   }
 
