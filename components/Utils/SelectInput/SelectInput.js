@@ -23,6 +23,10 @@ export default function SelectInput({ label, id, name, placeholder, required, op
                 components={{
                     IndicatorSeparator: () => null
                 }}
+                styles={{
+                    // Fixes the overlapping problem of the component
+                    menu: provided => ({ ...provided, zIndex: 9999 })
+                }}
             />
         </div>
     )
