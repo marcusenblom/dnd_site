@@ -1,10 +1,9 @@
+import EncounterPage from "components/EncounterPage/EncounterPage";
 import Link from "next/link";
 
-export default function EncounterPage({}) {
+export default function Index({}) {
 
   return (
-    <div>
-      Encounter
-    </div>
+    <EncounterPage />
   )
 }
