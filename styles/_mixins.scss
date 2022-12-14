@@ -55,11 +55,10 @@
 }
 
 @mixin mainButton{
-    background-color: $mainColorDark;
-    border: 1px solid $mainColorDark;
+    background-color: $mainColorRed;
+    border: 1px solid $mainColorRed;
     font-family: $mainFont;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 600;
     padding: 12px 15px 10px;
     color: #ffffff;
     text-align: center;
@@ -71,8 +70,8 @@
     transition: all 0.2s ease-in-out;
 
     &:hover{
-        background-color: $mainColorMediumDark;
-        border: 1px solid $mainColorMediumDark;
+        background-color: $mainColorRedMediumDark;
+        border: 1px solid $mainColorRedMediumDark;
     }
     &:disabled{
         opacity: 0.4;

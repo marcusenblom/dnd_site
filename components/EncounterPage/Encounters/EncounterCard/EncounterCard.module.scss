@@ -1,0 +1,13 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.card{
+    width: 100%;
+    padding: 32px 16px;    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1300px;
+
+}

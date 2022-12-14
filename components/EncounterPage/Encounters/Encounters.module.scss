@@ -1,10 +1,31 @@
 @import '/styles/_mixins.scss';
 @import '/styles/_variables.scss';
 
-.main{
+.encounters{
     width: 100%;
-    height: 100%;
-    
+    padding: 32px 16px;    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1300px;
 
+    .encounterList{
+        padding-right: 22px;
+
+        .list{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
    
+    .addNew{
+        padding-left: 22px;
+
+        button{
+            @include mainButton;
+            white-space: nowrap;
+        }
+    }
 }
