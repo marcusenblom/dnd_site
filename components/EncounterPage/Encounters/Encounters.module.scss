@@ -8,7 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1300px;
+    max-width: 1600px;
 
     .encounterList{
         padding-right: 22px;
@@ -17,6 +17,10 @@
             padding: 0;
             margin: 0;
             list-style: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
         }
     }
    

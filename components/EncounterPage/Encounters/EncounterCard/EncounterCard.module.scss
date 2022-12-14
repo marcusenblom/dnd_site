@@ -2,12 +2,37 @@
 @import '/styles/_variables.scss';
 
 .card{
-    width: 100%;
-    padding: 32px 16px;    
+    padding: 22px;
+    margin-right: 12px;
+    margin: 12px;
+    height: 240px;
+    width: 320px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
-    max-width: 1300px;
+    max-width: 1600px;
+    background-color: rgb(37, 37, 37);
+    box-shadow: $boxShadow;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
+    &:hover{
+        box-shadow: $boxShadowDark;
+        transform: scale(1.02);
+    }
+
+    .nameContainer{
+        width: 100%;
+        margin-bottom: 12px;
+
+        .name{
+            margin: 0;
+            font-size: 18px;
+        }
+    }
 }

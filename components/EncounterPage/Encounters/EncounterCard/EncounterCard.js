@@ -7,7 +7,13 @@ export default function EncounterCard({ encounter }){
 
     return(
         <li className={styles.card}>
-            <p>{encounter?.id}</p>
+            <div className={styles.nameContainer}>
+                <p className={styles.name}>{encounter?.name}</p>
+            </div>
+
+            <div className={styles.dateContainer}>
+                <span className={styles.name}>{encounter?.createdAt}</span>
+            </div>
            
         </li>
     )

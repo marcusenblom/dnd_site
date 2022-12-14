@@ -26,12 +26,15 @@ export default function Encounters({}){
 
         let newEncounter = {
             id: id,
-            name: "test",
-            monsters: []
+            createdAt: new Date(),
+            name: "Test",
+            monsters: [],
+
         }
 
         encounters?.push({
-            id: id,
+            id: newEncounter?.id,
+            createdAt: newEncounter?.createdAt,
             name: newEncounter?.name
         });
         localStorage.setItem("encounters", JSON.stringify(encounters));
