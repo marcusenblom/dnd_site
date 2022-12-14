@@ -5,7 +5,7 @@ export default function Encounters({}){
 
     return(
         <section className={styles.main}>
-            List encounters
+            
 
         </section>
     )

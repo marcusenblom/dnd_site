@@ -23,7 +23,7 @@ export default function MobileNav({ transparent }){
             </div>
 
             <div className={styles.logo}>
-                <img src="/logo.png" alt="logga" />
+                <img src="/logo_black.png" alt="logga" />
             </div>
 
             <div className={styles.right}></div>
@@ -31,7 +31,7 @@ export default function MobileNav({ transparent }){
             <div className={cn(styles.slideOutContent, show && styles.show)}>
                 <div className={styles.inner}>
                     <div className={styles.logo}>
-                        <img src="/logo.png" alt="logga" />
+                        <img src="/logo_black.png" alt="logga" />
                     </div>
                     <ul className={styles.navItems}>
                         <NavLink href="/" label="Home" active={router?.pathname == "/"}/>

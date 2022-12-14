@@ -11,7 +11,7 @@ export default function HeaderNav({ transparent }){
         <nav className={cn(styles.nav, transparent && styles.transparent)}>
 
             <div className={styles.logo}>
-                <Link href="/"><img src="/logo.png" alt="logga" /></Link>
+                <Link href="/"><img src="/logo_black.png" alt="logga" /></Link>
             </div>
             
             <ul className={styles.navItems}>

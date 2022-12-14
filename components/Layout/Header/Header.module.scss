@@ -17,5 +17,9 @@
     &.transparent{
         background: transparent;
         box-shadow: none;
+
+        img{
+            filter: invert(100%);
+        }
     }
 }
