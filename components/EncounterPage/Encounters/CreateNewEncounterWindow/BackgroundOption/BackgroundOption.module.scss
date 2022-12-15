@@ -1,0 +1,50 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.li{
+    height: 150px;
+    width: 265px;
+    margin: 6px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: all 0.3s ease-in-out;
+    filter: brightness(70%);
+    cursor: pointer;
+    position: relative;
+
+    .checked{
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        span{
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            background: #851111c7;
+            border-radius: 2px;
+            padding: 0 8px;
+        }
+    }
+
+    .bgImage{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:not(.selected):hover{
+        filter: brightness(100%);
+        z-index: 10;
+        box-shadow: $boxShadowDark;
+    }
+
+    &.selected{
+        box-shadow: $boxShadow;
+        filter: brightness(100%);
+    }
+}

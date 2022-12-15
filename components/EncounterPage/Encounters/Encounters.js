@@ -5,6 +5,7 @@ import EncounterCard from './EncounterCard/EncounterCard';
 import { generateId } from 'lib/helpFunctions';
 import AddNewCard from './AddNewCard/AddNewCard';
 import CreateNewEncounterWindow from './CreateNewEncounterWindow/CreateNewEncounterWindow';
+import { Encounter } from 'classes/encounter';
 
 export default function Encounters({}){
     const [encounters, setEncounters] = useState([]);
@@ -25,29 +26,42 @@ export default function Encounters({}){
         setEncounters(sorted);
     }
 
-    function createNewEncounter(){
+    function createNewEncounter(name, bg){
         let encounters = JSON.parse(localStorage.getItem("encounters")) || [];
         
         let id = generateId("encounter");
 
-        let newEncounter = {
+        let newEncounter = new Encounter({
             id: id,
             createdAt: new Date(),
-            name: "Test",
-            monsters: [],
-
-        }
+            name: name,
+            bgImage: bg
+        });
 
         encounters?.push({
             id: newEncounter?.id,
             createdAt: newEncounter?.createdAt,
-            name: newEncounter?.name
+            name: newEncounter?.name,
+            bgImage: newEncounter?.bgImage
         });
         localStorage.setItem("encounters", JSON.stringify(encounters));
+
+        setCreating(false);
+
         getEncounters();
 
         localStorage.setItem("encounter:" + id, JSON.stringify(newEncounter));
+    }
 
+    function deleteEncounter(id){
+        let encounters = JSON.parse(localStorage.getItem("encounters")) || [];
+        
+        let filtered = encounters?.filter(enc => enc?.id != id);
+
+        localStorage.setItem("encounters", JSON.stringify(filtered));
+        getEncounters();
+
+        localStorage.removeItem(`encounter:${id}`);
     }
 
     return(
@@ -57,17 +71,19 @@ export default function Encounters({}){
             </div>
             
             <div className={styles.content}>
-                <AddNewCard createNewEncounter={()=>{setCreating(!creating)}} amountOfEncounters={encounters?.length || 1}/>
+                <AddNewCard createNewEncounter={()=>{setCreating(true)}} amountOfEncounters={encounters?.length || 1} creating={creating}/>
 
-                <CreateNewEncounterWindow show={creating}/>
+                <CreateNewEncounterWindow creating={creating} setCreating={setCreating} create={createNewEncounter}/>
 
+                {encounters?.length > 0 && 
                 <div className={styles.subHeaderContainer}>
                     <h3 className={styles.subHeader}>My encounters</h3>
                 </div>
+                }
                 <div className={styles.encounterList}>
                     <ul className={styles.list}>
                         {encounters?.length > 0 && encounters?.map((en, i) => {
-                            return <EncounterCard key={i} index={i} encounter={en}/>
+                            return <EncounterCard key={en?.id} index={i} encounter={en} deleteEncounter={deleteEncounter}/>
                         })}
                     </ul>
                 </div>
