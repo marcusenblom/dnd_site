@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import EncounterCard from './EncounterCard/EncounterCard';
 import { generateId } from 'lib/helpFunctions';
 import AddNewCard from './AddNewCard/AddNewCard';
+import CreateNewEncounterWindow from './CreateNewEncounterWindow/CreateNewEncounterWindow';
 
 export default function Encounters({}){
     const [encounters, setEncounters] = useState([]);
+    const [creating, setCreating] = useState(false);
 
     useEffect(()=>{
         getEncounters();
@@ -55,8 +57,14 @@ export default function Encounters({}){
             </div>
             
             <div className={styles.content}>
+                <AddNewCard createNewEncounter={()=>{setCreating(!creating)}} amountOfEncounters={encounters?.length || 1}/>
+
+                <CreateNewEncounterWindow show={creating}/>
+
+                <div className={styles.subHeaderContainer}>
+                    <h3 className={styles.subHeader}>My encounters</h3>
+                </div>
                 <div className={styles.encounterList}>
-                <AddNewCard createNewEncounter={createNewEncounter} amountOfEncounters={encounters?.length || 1}/>
                     <ul className={styles.list}>
                         {encounters?.length > 0 && encounters?.map((en, i) => {
                             return <EncounterCard key={i} index={i} encounter={en}/>

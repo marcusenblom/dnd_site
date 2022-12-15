@@ -1,0 +1,28 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.createNew{
+    max-height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+
+    .createNewWindow{
+        height: 500px;
+        width: calc(100% - 24px);
+        margin: 12px;
+        padding: 12px;
+        border: 1px solid lightgray;
+        box-shadow: $boxShadow;
+        border-radius: 8px;
+
+        .topHeader{
+            width: 100%;
+            font-size: 18px;
+        }
+    }
+
+    &.show{
+        max-height: 600px;
+    }
+}

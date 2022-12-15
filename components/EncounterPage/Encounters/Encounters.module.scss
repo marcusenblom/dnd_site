@@ -10,23 +10,31 @@
 
     .headerContainer{
         width: 100%;
+        padding-left: 12px;
+        margin: 16px 0 8px 0;
 
         .header{
-            padding-left: 12px;
+            margin: 0;
+        }
+    }
+
+    .subHeaderContainer{
+        width: 100%;
+        padding-left: 12px;
+        margin: 22px 0 8px 0;
+
+        .subHeader{
+            margin: 0;
         }
     }
 
     .content{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-
-        @include xs{
-            flex-direction: column;
-            align-items: center;
-        }
+        padding-bottom: 60px;
 
         .encounterList{
             padding-right: 22px;
