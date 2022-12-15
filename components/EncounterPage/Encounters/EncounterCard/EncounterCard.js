@@ -7,6 +7,9 @@ export default function EncounterCard({ encounter }){
 
     return(
         <li className={styles.card}>
+
+            <div className={styles.bg}><img className={styles.img} src="/img/battles/battle_1.jpg" alt="" /></div>
+
             <div className={styles.nameContainer}>
                 <p className={styles.name}>{encounter?.name}</p>
             </div>

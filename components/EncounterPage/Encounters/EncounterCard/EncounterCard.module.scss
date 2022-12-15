@@ -18,12 +18,28 @@
     color: white;
     display: flex;
     flex-direction: column;
+    position: relative;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    z-index: 1;
 
-    &:hover{
-        box-shadow: $boxShadowDark;
-        transform: scale(1.02);
+    .bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: -1;
+
+        .img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease-in-out;
+            filter: brightness(35%);
+        }
     }
 
     .nameContainer{
@@ -34,5 +50,20 @@
             margin: 0;
             font-size: 18px;
         }
+    }
+
+    &:hover{
+        box-shadow: $boxShadowDark;
+        transform: scale(1.02);
+
+        .bg{
+            .img{
+                filter: brightness(45%);
+            }
+        }
+    }
+
+    @include xs{
+        width: 100%;
     }
 }

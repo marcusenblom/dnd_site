@@ -3,33 +3,60 @@
 
 .encounters{
     width: 100%;
-    padding: 32px 16px;    
+    padding: 24px 16px;    
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
     max-width: 1600px;
 
-    .encounterList{
-        padding-right: 22px;
+    .headerContainer{
+        width: 100%;
 
-        .list{
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: flex-start;
+        .header{
+
         }
     }
-   
-    .addNew{
-        padding-left: 22px;
 
-        button{
-            @include mainButton;
-            white-space: nowrap;
+    .content{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        @include xs{
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .encounterList{
+            padding-right: 22px;
+    
+            .list{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+        }
+       
+        .addNew{
+            padding-left: 22px;
+            padding-top: 12px;
+    
+            @include xs{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding: 32px 16px 60px 16px;
+            }
+    
+            button{
+                @include mainButton;
+                white-space: nowrap;
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ export default function MobileNav({ transparent }){
                     </div>
                     <ul className={styles.navItems}>
                         <NavLink href="/" label="Home" active={router?.pathname == "/"}/>
-                        <NavLink href="/encounter" label="Encounter" active={router?.pathname?.includes("/encounter")}/>
+                        <NavLink href="/encounters" label="Encounters" active={router?.pathname?.includes("/encounters")}/>
                         <NavLink href="/monsters" label="Monsters" active={router?.pathname?.includes("/monsters")}/>
                         <NavLink href="/races" label="Races" active={router?.pathname?.includes("/races")}/>
                         <NavLink href="/spells" label="Spells" active={router?.pathname?.includes("/spells")}/>

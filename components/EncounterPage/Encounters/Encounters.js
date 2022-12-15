@@ -46,17 +46,22 @@ export default function Encounters({}){
 
     return(
         <div className={styles.encounters}>
-
-            <div className={styles.encounterList}>
-                <ul className={styles.list}>
-                    {encounters?.length > 0 && encounters?.map((en, i) => {
-                        return <EncounterCard key={i} encounter={en}/>
-                    })}
-                </ul>
+            <div className={styles.headerContainer}>
+                <h2 className={styles.header}>Encounters</h2>
             </div>
+            
+            <div className={styles.content}>
+                <div className={styles.encounterList}>
+                    <ul className={styles.list}>
+                        {encounters?.length > 0 && encounters?.map((en, i) => {
+                            return <EncounterCard key={i} encounter={en}/>
+                        })}
+                    </ul>
+                </div>
 
-            <div className={styles.addNew}>
-                <button type="button" onClick={createNewEncounter}>Create new encounter</button>
+                <div className={styles.addNew}>
+                    <button type="button" onClick={createNewEncounter}>Create new encounter</button>
+                </div>
             </div>
         </div>
     )
