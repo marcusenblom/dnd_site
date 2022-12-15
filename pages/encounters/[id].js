@@ -1,9 +1,10 @@
-import EncounterPage from "components/EncountersPage/EncounterPage";
-import Link from "next/link";
+import SingleEncounterPage from "components/SingleEncounterPage/SingleEncounterPage";
+import { useRouter } from "next/router";
 
 export default function Index({}) {
+  const router = useRouter();
 
   return (
-    <EncounterPage />
+    <SingleEncounterPage id={router?.query?.id}/>
   )
 }
