@@ -1,22 +1,23 @@
 @import '/styles/_mixins.scss';
 @import '/styles/_variables.scss';
 
-.card{
+.addNew{
     padding: 22px;
-    margin: 12px;
-    height: 240px;
-    width: 320px;
+    height: 200px;
+    width: 280px;
+    margin: 12px 12px 22px 12px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(184, 184, 184);
     box-shadow: $boxShadow;
     border-radius: 8px;
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -41,22 +42,31 @@
         }
     }
 
-    .dateContainer{
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-
-        .date{
-            font-size: 14px;
+    .icon{
+        img{
+            height: 60px;
+            filter: invert(100%);
+            transition: all 0.5s ease-in-out;
         }
     }
 
-    .nameContainer{
+    .textContainer{
+        position: absolute;
+        top: 78%;
+        left: 0;
+        transform: translateY(-22%);
         width: 100%;
+        display: flex;
+        justify-content: center;
 
-        .name{
+        .text{
+            text-align: center;
+            white-space: nowrap;
+            font-size: 18px;
             margin: 0;
-            font-size: 22px;
+            text-shadow: 1px 1px 5px $dirtyGold;
+            color: $dirtyGold;
+            filter: brightness(150%);
         }
     }
 
@@ -64,14 +74,15 @@
         box-shadow: $boxShadowDark;
         transform: scale(1.02);
 
-        .bg{
-            .img{
-                filter: brightness(45%);
+        .icon{
+            img{
+                transform: rotate(180deg);
             }
         }
     }
 
     @include xs{
         width: 100%;
+        margin: 12px;
     }
 }
