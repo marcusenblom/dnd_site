@@ -6,4 +6,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+
+    &.hideHeader{
+        padding-top: 0;
+    }
 }
