@@ -62,7 +62,6 @@ export default function CreateNewEncounterWindow({ creating, setCreating, create
                             <BackgroundOption bgImage={formData?.bgImage} bgNumber={"3"} handleChange={handleChange}/>
                             <BackgroundOption bgImage={formData?.bgImage} bgNumber={"4"} handleChange={handleChange}/>
                             <BackgroundOption bgImage={formData?.bgImage} bgNumber={"5"} handleChange={handleChange}/>
-                            <BackgroundOption bgImage={formData?.bgImage} bgNumber={"6"} handleChange={handleChange}/>
                         </ul>
                     </div>
                 </div>

@@ -15,9 +15,6 @@ export default function Encounters({}){
         getEncounters();
     }, []);
 
-    console.log("Encounters:");
-    console.log(encounters);
-
     function getEncounters(){
         let encounters = JSON.parse(localStorage.getItem("encounters")) || [];
         let sorted = encounters?.sort(function(a, b) {
@@ -71,7 +68,7 @@ export default function Encounters({}){
             </div>
             
             <div className={styles.content}>
-                <AddNewCard createNewEncounter={()=>{setCreating(true)}} amountOfEncounters={encounters?.length || 1} creating={creating}/>
+                <AddNewCard createNewEncounter={()=>{setCreating(true)}} creating={creating}/>
 
                 <CreateNewEncounterWindow creating={creating} setCreating={setCreating} create={createNewEncounter}/>
 

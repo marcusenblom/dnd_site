@@ -1,0 +1,95 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.createNew{
+    max-height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+
+    .createNewWindow{
+        width: calc(100% - 32px);
+        margin: 0 16px;
+        padding: 16px;
+        border: 2px solid $mainColorRed;
+        box-shadow: $boxShadow;
+        border-radius: 3px;
+        background-color: rgba(255, 255, 255, 0.403);
+
+        .topHeader{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+
+            .header{
+                font-size: 20px;
+                margin: 0;
+                color: black;
+            }
+
+            .close{
+                position: relative;
+                height: 24px;
+                width: 24px;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                .line{
+                    position: absolute;
+                    width: 24px;
+                    height: 2px;
+                    background-color: $mainColorRed;
+                    top: 50%;
+                    left: 50%;
+                    transition: all 0.5s;
+                }
+                .lineOne{
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+                .lineTwo{
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                
+                &:hover{
+                    transform: rotate(90deg) scale(1.2);
+                }
+            }
+        }
+
+        .nameContainer{
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 28px;
+        }
+
+        .listWrapper{
+            width: 100%;
+
+            ul{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+        }
+
+        .bottomBar{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 22px;
+
+            button{
+                @include mainButton;
+            }
+        }
+    }
+
+    &.show{
+        max-height: 1400px;
+    }
+}

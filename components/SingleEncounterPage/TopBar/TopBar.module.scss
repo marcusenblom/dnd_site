@@ -1,0 +1,60 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.topBar{
+    width: 100%;
+    padding: 0 16px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+
+    .leftNav{
+        height: 100%;
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        .buttonWrapper{
+            padding: 8px 8px 8px 0;
+            height: 100%;
+
+            .navButton{
+                height: 100%;
+                padding: 0 12px;
+                border: 2px solid $mainColorRed;
+                background: white;
+                font-family: $mainFont;
+                color: $mainColorRed;
+                font-weight: 600;
+                border-radius: 1px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &.active{
+                    background-color: $mainColorRed;
+                    color: white;
+                } 
+            }
+        }
+    }
+
+    .headerContainer{
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .header{
+            margin: 0;
+        }
+    }
+
+    .rightNav{
+        height: 100%;
+        width: 40%;
+    }
+}
+    
