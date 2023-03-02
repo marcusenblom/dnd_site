@@ -19,12 +19,6 @@ export default function MonsterCard({ monster : {strength, dexterity, constituti
 
     }, [])
 
-    useEffect(()=>{
-        if(showMore){
-            console.log(monster);
-        }
-    }, [showMore]);
-
     function createSpeed(){
         let arr = [];
         for (const [key, value] of Object.entries(monster?.speed)) {

@@ -19,7 +19,6 @@ export default function CreateNewEncounterWindow({ creating, setCreating, create
     }
 
     function createThis(){
-        console.log(formData);
         if(formData?.name?.length > 0 && formData?.bgImage?.length > 0){
             create(formData?.name, formData?.bgImage);
             setFormData({

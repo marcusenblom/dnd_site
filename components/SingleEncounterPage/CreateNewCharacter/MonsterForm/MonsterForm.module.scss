@@ -1,0 +1,34 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.form{
+    display: flex;
+    flex-direction: column;
+
+    .inputWrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-bottom: 60px;
+
+        .inputContainer{
+            width: 100%;
+            max-width: 280px;
+            margin: 0 16px 16px 0;
+        }
+    }
+
+    .bottomBar{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 22px;
+
+        button{
+            @include mainButton;
+        }
+    }
+}

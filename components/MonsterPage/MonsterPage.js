@@ -58,7 +58,6 @@ export default function MonsterPage({ monsters, count }){
     }
 
     function changePage(page){
-        console.log(window.scrollY);
         setPage(page);
         if(window?.scrollY && window?.scrollY > 400){
             scrollToTargetElement("monsterList");

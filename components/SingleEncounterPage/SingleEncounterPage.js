@@ -4,14 +4,16 @@ import { useEffect, useState } from 'react';
 import Curtain from 'components/Utils/Curtain/Curtain';
 import CreateNewCharacter from './CreateNewCharacter/CreateNewCharacter';
 import TopBar from './TopBar/TopBar';
+import { Hero } from 'classes/hero';
+import { generateId } from 'lib/helpFunctions';
+import { Monster } from 'classes/monster';
+import CharacterList from './CharacterList/CharacterList';
 
 export default function SingleEncounterPage({id}){
     const [encounter, setEncounter] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showCurtain, setShowCurtain] = useState(false);
-
     const [creatingNewCharacter, setCreatingNewCharacter] = useState(false);
-
 
     useEffect(()=>{
         initializeLoad();
@@ -37,13 +39,38 @@ export default function SingleEncounterPage({id}){
     }
 
     function updateLocalStorage(){
-        console.log("updating local");
-        console.log(encounter);
         localStorage.setItem(`encounter:${id}`, JSON.stringify(encounter));
     }
 
-    function createNewCharacter(settings){
+    function createNewHero(hero){
+        let newEnc = {...encounter};
 
+        let id = generateId();
+        let newHero = new Hero({
+            id: id,
+            name: hero?.name,
+            race: hero?.race
+        })
+
+        newEnc?.heroes?.push(newHero);
+        setEncounter(newEnc);
+    }
+
+    function createNewMonster(monster){
+        let newEnc = {...encounter};
+
+        let id = generateId();
+        let newMonster = new Monster({
+            id: id,
+            name: monster?.name,
+            monster_type: monster?.monster_type,
+            max_hp: monster?.max_hp,
+            curr_hp: monster?.max_hp,
+            ac: monster?.ac
+        })
+
+        newEnc?.monsters?.push(newMonster);
+        setEncounter(newEnc);
     }
 
     return(
@@ -56,8 +83,9 @@ export default function SingleEncounterPage({id}){
                     
                     <TopBar name={encounter?.name} setCreatingNewCharacter={()=>{setCreatingNewCharacter(true)}} creatingNewCharacter={creatingNewCharacter}/>
 
-                    <CreateNewCharacter creating={creatingNewCharacter} setCreating={setCreatingNewCharacter} create={createNewCharacter}/>
+                    <CreateNewCharacter creating={creatingNewCharacter} setCreating={setCreatingNewCharacter} createNewHero={createNewHero} createNewMonster={createNewMonster}/>
 
+                    <CharacterList encounter={encounter} setEncounter={setEncounter}/>
                     
                 </div>
 

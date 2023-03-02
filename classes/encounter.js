@@ -6,6 +6,6 @@ export class Encounter {
         this.bgImage = config.bgImage || "1";
 
         this.monsters = config.monsters || [];
-        this.players = [];
+        this.heroes = [];
     }
 }

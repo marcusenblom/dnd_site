@@ -1,0 +1,115 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.monster{
+    width: 100%;
+    margin-bottom: 20px;
+
+    .inner{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        .imageContainer{
+            height: 86px;
+            z-index: 2;
+            border-radius: 50%;
+            border: 3px solid rgb(34, 30, 30);
+            box-shadow: $boxShadow;
+
+            .imageContainerInner{
+                height: 100%;
+                width: 80px;
+                border-radius: 50%;
+                border: 3px solid $mainColorRed;      
+                position: relative;          
+
+                .typeImage{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                .ac{
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    border: 3px solid rgb(34, 30, 30);
+                    background-color: rgb(34, 30, 30);
+                    position: absolute;
+                    right: -14px;
+                    bottom: -14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span{
+                        color: white;
+                        font-weight: 700;
+                        font-size: 18px;
+                        position: relative;
+                        // margin-bottom: 10px;
+
+                        // &::after{
+                        //     content: "ac";
+                        //     position: absolute;
+                        //     bottom: -8px;
+                        //     left: 50%;
+                        //     transform: translateX(-50%);
+                        //     font-size: 12px;
+                        //     font-weight: 400;
+                        // }
+                    }
+
+                }
+            }
+        }
+
+        .middle{
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .healthBarContainer{
+                width: 220px;
+                height: 30px;
+                border-radius: 4px;
+                border: 2px solid rgb(34, 30, 30);
+                background-color: transparent;
+                transform: translateX(-12px);
+                z-index: 1;
+                box-shadow: $boxShadow;
+                position: relative;
+
+                .nameContainer{
+                    position: absolute;
+                    top: -28px;
+                    left: 12px;
+
+                    .name{
+                        margin: 0;
+                        font-weight: 600;
+                        color: $mainColorRed;
+                    }
+                }
+    
+                .healthBarInner{
+                    width: 100%;
+                    height: 100%;
+    
+                    .currentHealth{
+                        height: 100%;
+                        width: 50%;
+                        border-radius: 1px;
+                        background-color: $mainColorRed;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -26,7 +26,7 @@ export default function Encounters({}){
     function createNewEncounter(name, bg){
         let encounters = JSON.parse(localStorage.getItem("encounters")) || [];
         
-        let id = generateId("encounter");
+        let id = generateId();
 
         let newEncounter = new Encounter({
             id: id,

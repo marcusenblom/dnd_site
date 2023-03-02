@@ -10,11 +10,10 @@ export default function HeroForm({ createThis }){
     const [raceNames, setRaceNames] = useState([])
     const [heroData, setHeroData] = useState({
         name: "",
-        race: ""
+        race: "",
     });
 
     useEffect(()=>{
-        console.log(heroRaces);
         let names = heroRaces?.map(race => race?.name);
         setRaceNames(names);
     }, [])
@@ -25,32 +24,27 @@ export default function HeroForm({ createThis }){
             [name]: value
         }));
     }
+
+    function createHero(){
+        createThis(heroData);
+    }
+
     return(
         <div className={styles.form}>
            
             <div className={styles.inputWrapper}>
                 <div className={styles.inputContainer}>
-                    <TextInput label="Name" type="text" value={heroData?.name} handleChange={handleChange} name="name"/>
+                    <TextInput label="Name" type="text" value={heroData?.name} handleChange={handleChange} name="name" placeholder="Hero name"/>
                 </div>
 
                 <div className={styles.inputContainer}>
                     <InputLabel label="Race"/>
-                    <FreeTextWithSuggestions value={heroData?.race} placeholder="Human" handleChange={(name, value)=>{handleChange("race", value)}} options={raceNames} dropDownHeight="200px" onClickTrigger={(value)=>{handleChange("race", value)}} hideButton={true}/>
-                </div>
-
-                <div className={styles.inputContainer}>
-                    <TextInput label="Name" type="text" value={heroData?.name} handleChange={handleChange} name="name"/>
-                </div>
-                <div className={styles.inputContainer}>
-                    <TextInput label="Name" type="text" value={heroData?.name} handleChange={handleChange} name="name"/>
-                </div>
-                <div className={styles.inputContainer}>
-                    <TextInput label="Name" type="text" value={heroData?.name} handleChange={handleChange} name="name"/>
+                    <FreeTextWithSuggestions value={heroData?.race} placeholder="Hero race" handleChange={(name, value)=>{handleChange("race", value)}} options={raceNames} dropDownHeight="100px" onClickTrigger={(value)=>{handleChange("race", value)}} hideButton={true}/>
                 </div>
             </div>
 
             <div className={styles.bottomBar}>
-                <button type="button" onClick={createThis}>Create hero</button>
+                <button type="button" onClick={createHero}>Create hero</button>
             </div>
         </div>
     )

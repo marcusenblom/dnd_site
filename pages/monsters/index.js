@@ -18,7 +18,6 @@ export default function Monsters({}) {
   //     const res = monstersArray[0];
   //     newAll.push(res);
   //     all.current = newAll;
-  //     console.log(all.current);
   //   }
   // }
   
@@ -41,7 +40,6 @@ export async function getStaticProps({}){
   // for (let i = 0; i < res.results.length; i++) {
   //   const mon = await getMonster(res?.results[i]?.index);
   //   monsters.push(mon);
-  //   console.log(monsters?.length);
   // }
 
   return{

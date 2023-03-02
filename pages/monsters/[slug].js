@@ -27,14 +27,9 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({ params }){
     // const res = await getMonster(params?.slug);
-    // console.log(res);
     // const damage_type = await apiQuery(res?.actions[0].damage[0].damage_type.url);
 
     const res = monstersArray?.find(monster => monster?.index == params?.slug);
-
-    // res.forEach(element => {
-    //     console.log(element?.index);
-    // });
 
     return{
         props: {

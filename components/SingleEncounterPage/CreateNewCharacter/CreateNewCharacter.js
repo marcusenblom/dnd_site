@@ -7,16 +7,17 @@ import MonsterForm from './MonsterForm/MonsterForm';
 import HeroForm from './HeroForm/HeroForm';
 import CharacterTypeSelection from './CharacterTypeSelection/CharacterTypeSelection';
 
-export default function CreateNewCharacter({ creating, setCreating }){
+export default function CreateNewCharacter({ creating, setCreating, createNewHero, createNewMonster }){
     const [characterType, setCharacterType] = useState("");
 
     function createMonster(monster){
-        console.log(monster);
+        createNewMonster(monster);
+        setCharacterType("");
     }
     function createHero(hero){
-        console.log(hero);
+        createNewHero(hero);
+        setCharacterType("");
     }
-
 
     function close(){
         setCreating(!creating);
@@ -31,7 +32,7 @@ export default function CreateNewCharacter({ creating, setCreating }){
             <div className={styles.createNewWindow}>
 
                 <div className={styles.topHeader}>
-                    <p className={styles.header}>Create new character</p>
+                    <p className={styles.header}>{characterType == "hero" ? "Creating new hero" : characterType == "monster" ? "Creating new monster" : "Create new character"}</p>
                     <div className={styles.close} onClick={close}>
                         <div className={cn(styles.line, styles.lineOne)}></div>
                         <div className={cn(styles.line, styles.lineTwo)}></div>

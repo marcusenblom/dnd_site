@@ -56,37 +56,6 @@
                 }
             }
         }
-
-        .nameContainer{
-            width: 100%;
-            max-width: 300px;
-            margin-bottom: 28px;
-        }
-
-        .listWrapper{
-            width: 100%;
-
-            ul{
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-            }
-        }
-
-        .bottomBar{
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            padding-top: 22px;
-
-            button{
-                @include mainButton;
-            }
-        }
     }
 
     &.show{

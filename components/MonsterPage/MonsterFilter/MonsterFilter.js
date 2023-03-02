@@ -67,7 +67,6 @@ export default function MonsterFilter({ searchWord, setSearchWord }){
 
     function removeType(monsterType){
         let types = router?.query?.type;
-        console.log(types);
         let newTypes;
         if(!types){
             return;
@@ -104,7 +103,6 @@ export default function MonsterFilter({ searchWord, setSearchWord }){
     function setNewCrMin(option){
         let newQuery = {...router?.query};
 
-        console.log(option);
         if(option?.value == ""){
             delete newQuery?.crMin;
         } else {
@@ -120,7 +118,6 @@ export default function MonsterFilter({ searchWord, setSearchWord }){
     function setNewCrMax(option){
         let newQuery = {...router?.query};
 
-        console.log(option);
         if(option?.value == ""){
             delete newQuery?.crMax;
         } else {
