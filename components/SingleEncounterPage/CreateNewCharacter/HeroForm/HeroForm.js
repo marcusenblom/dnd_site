@@ -3,7 +3,7 @@ import cn from 'classnames';
 import TextInput from 'components/Utils/TextInput/TextInput';
 import { useEffect, useState } from 'react';
 import FreeTextWithSuggestions from 'components/Utils/FreeTextWithSuggestions/FreeTextWithSuggestions';
-import {heroRaces} from 'lib/heroRaces';
+import {heroRaces} from 'lib/db/heroRaces';
 import InputLabel from 'components/Utils/InputLabel/InputLabel';
 
 export default function HeroForm({ createThis }){

@@ -1,7 +1,10 @@
 import styles from './MonsterForm.module.scss';
 import cn from 'classnames';
 import TextInput from 'components/Utils/TextInput/TextInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import InputLabel from 'components/Utils/InputLabel/InputLabel';
+import FreeTextWithSuggestions from 'components/Utils/FreeTextWithSuggestions/FreeTextWithSuggestions';
+import { monsterTypes } from 'lib/db/monsterTypes';
 
 export default function MonsterForm({ createThis }){
     const [monsterData, setMonsterData] = useState({
@@ -10,7 +13,6 @@ export default function MonsterForm({ createThis }){
         max_hp: "",
         ac: "",
     });
-
 
     function handleChange(name, value){
         setMonsterData(monsterData => ({
@@ -28,19 +30,21 @@ export default function MonsterForm({ createThis }){
            
             <div className={styles.inputWrapper}>
                 <div className={styles.inputContainer}>
-                    <TextInput label="Name" type="text" value={monsterData?.name} handleChange={handleChange} name="name"/>
+                    <TextInput label="Name" type="text" placeholder="monster name" value={monsterData?.name} handleChange={handleChange} name="name"/>
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <TextInput label="Type of monster" type="text" value={monsterData?.monster_type} handleChange={handleChange} name="monster_type"/>
+                    <InputLabel label="Type of monster"/>
+                    <FreeTextWithSuggestions value={monsterData?.monster_type} placeholder="monster type" handleChange={(name, value)=>{handleChange("monster_type", value)}} options={monsterTypes} dropDownHeight="140px" onClickTrigger={(value)=>{handleChange("monster_type", value)}} hideButton={true}/>
+
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <TextInput label="Max hitpoints" type="text" value={monsterData?.max_hp} handleChange={handleChange} name="max_hp"/>
+                    <TextInput label="Max hitpoints" type="number" placeholder="max hitpoints" value={monsterData?.max_hp} handleChange={(name, value)=>{handleChange(name, parseInt(value))}} name="max_hp"/>
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <TextInput label="Armor class" type="text" value={monsterData?.ac} handleChange={handleChange} name="ac"/>
+                    <TextInput label="Armor class" type="number" placeholder="armor class" value={monsterData?.ac} handleChange={(name, value)=>{handleChange(name, parseInt(value))}} name="ac"/>
                 </div>
             </div>
 

@@ -1,14 +1,15 @@
 import styles from './MonsterCharacter.module.scss';
 import cn from 'classnames';
 
-export default function MonsterCharacter({ name, monster_type, max_hp, ac, curr_hp}){
+export default function MonsterCharacter({ beHealed, takeDmg, name, monster_type, max_hp, ac, curr_hp}){
 
     return(
         <div className={styles.monster}>
             
             <div className={styles.inner}>
 
-                <div className={styles.imageContainer}>
+                <div className={styles.imageContainer} onClick={()=>{beHealed(6)}}>
+
                     <div className={styles.imageContainerInner}>
                         <img className={styles.typeImage} src={`/img/placeholders/${monster_type}.jpg`} alt="" />
 
@@ -16,11 +17,12 @@ export default function MonsterCharacter({ name, monster_type, max_hp, ac, curr_
                             <span>{ac}</span>
                         </div>
                     </div>
+
                 </div>
 
                 <div className={styles.middle}>
 
-                    <div className={styles.healthBarContainer}>
+                    <div className={styles.healthBarContainer} onClick={()=>{takeDmg(3)}}>
 
                         <div className={styles.nameContainer}>
                             <p className={styles.name}>{name}</p>

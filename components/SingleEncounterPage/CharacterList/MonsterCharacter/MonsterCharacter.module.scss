@@ -15,16 +15,19 @@
 
         .imageContainer{
             height: 86px;
+            width: 86px;
             z-index: 2;
             border-radius: 50%;
-            border: 3px solid rgb(34, 30, 30);
+            background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, rgb(124, 124, 124), rgb(73, 65, 65)) border-box;
+            border: 5px solid transparent;
             box-shadow: $boxShadow;
 
             .imageContainerInner{
-                height: 100%;
-                width: 80px;
+                height: 76px;
+                width: 76px;
                 border-radius: 50%;
-                border: 3px solid $mainColorRed;      
+                // border: 3px solid $mainColorRed;
                 position: relative;          
 
                 .typeImage{
@@ -38,14 +41,17 @@
                     height: 40px;
                     width: 40px;
                     border-radius: 50%;
-                    border: 3px solid rgb(34, 30, 30);
-                    background-color: rgb(34, 30, 30);
+                    // background-color: rgb(34, 30, 30);
+                    background: url("/img/assets/stone_round.png");
+                    background-position: center;
+                    background-size: contain;
                     position: absolute;
                     right: -14px;
                     bottom: -14px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    // box-shadow: $boxShadowDark;
 
                     span{
                         color: white;
@@ -70,7 +76,7 @@
         }
 
         .middle{
-            width: 220px;
+            width: 214px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;

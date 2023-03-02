@@ -12,6 +12,7 @@ export default function TextInput({type, value, name, label, required, disabled,
         if(maxLength && val.length > maxLength){
             val = type == "number" ? parseInt(e.target.value.toString().slice(0, maxLength)) : e.target.value.toString().slice(0, maxLength);
         }
+
         handleChange(e.target.name, val);
     }
 
