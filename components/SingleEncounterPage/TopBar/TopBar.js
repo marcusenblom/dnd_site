@@ -8,8 +8,12 @@ export default function TopBar({ name, setCreatingNewCharacter, creatingNewChara
 
             <div className={styles.leftNav}>
                 <div className={styles.buttonWrapper}>
-                    <button type='button' className={cn(styles.navButton, creatingNewCharacter && styles.active)} onClick={()=>{setCreatingNewCharacter(true)}}>Create Character</button>
+                    <button type='button' className={cn(styles.navButton, creatingNewCharacter && styles.active)} onClick={()=>{setCreatingNewCharacter(true)}}>New Character</button>
                 </div>
+
+                {/* <div className={styles.buttonWrapper}>
+                    <button type='button' className={cn(styles.navButton, creatingNewCharacter && styles.active)} onClick={()=>{setCreatingNewCharacter(true)}}>New Character</button>
+                </div> */}
             </div>
 
             <div className={styles.headerContainer}>

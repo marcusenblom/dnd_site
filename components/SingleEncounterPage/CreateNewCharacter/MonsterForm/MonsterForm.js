@@ -1,8 +1,23 @@
 import styles from './MonsterForm.module.scss';
 import cn from 'classnames';
 import TextInput from 'components/Utils/TextInput/TextInput';
+import { useState } from 'react';
 
-export default function MonsterForm({ monsterData, handleChange, createThis }){
+export default function MonsterForm({ createThis }){
+    const [monsterData, setMonsterData] = useState({
+        name: "",
+        monster_type: "",
+        max_hp: "",
+        ac: "",
+    });
+
+
+    function handleChange(name, value){
+        setMonsterData(monsterData => ({
+            ...monsterData,
+            [name]: value
+        }));
+    }
 
     return(
         <div className={styles.form}>

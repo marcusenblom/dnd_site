@@ -5,54 +5,25 @@ import { useState } from 'react';
 import InputLabel from 'components/Utils/InputLabel/InputLabel';
 import MonsterForm from './MonsterForm/MonsterForm';
 import HeroForm from './HeroForm/HeroForm';
+import CharacterTypeSelection from './CharacterTypeSelection/CharacterTypeSelection';
 
-export default function CreateNewCharacter({ creating, setCreating, create }){
+export default function CreateNewCharacter({ creating, setCreating }){
     const [characterType, setCharacterType] = useState("");
-    const [monsterData, setMonsterData] = useState({
-        name: "",
-        monster_type: "",
-        max_hp: "",
-        ac: "",
-    });
-    const [heroData, setHeroData] = useState({
-        name: "",
-        race: ""
-    });
 
-    function handleMonsterChange(name, value){
-        setMonsterData(monsterData => ({
-            ...monsterData,
-            [name]: value
-        }));
+    function createMonster(monster){
+        console.log(monster);
     }
-    function handleHeroChange(name, value){
-        setHeroData(heroData => ({
-            ...heroData,
-            [name]: value
-        }));
-    }
-
-    function createMonster(){
-        console.log(monsterData);
-        // if(monsterData?.name?.length > 0 && monsterData?.bgImage?.length > 0){
-        //     create(monsterData?.name, monsterData?.bgImage);
-        //     setMonsterData({
-        //         name: "",
-        //         bgImage: "1"
-        //     });
-        // }
-    }
-    function createHero(){
-        console.log(heroData);
+    function createHero(hero){
+        console.log(hero);
     }
 
 
     function close(){
         setCreating(!creating);
-        setMonsterData({
-            name: "",
-            bgImage: "1"
-        });
+        
+        setTimeout(() => {
+            setCharacterType("");
+        }, 500);
     }
 
     return(
@@ -66,16 +37,15 @@ export default function CreateNewCharacter({ creating, setCreating, create }){
                         <div className={cn(styles.line, styles.lineTwo)}></div>
                     </div>
                 </div>
-
                
                 {characterType == "" ?
-                "hello"
+                <CharacterTypeSelection setCharacterType={setCharacterType}/>
                 :
                 <div className={styles.formData}>
                     {characterType == "monster" ? 
-                        <MonsterForm monsterData={monsterData} handleChange={handleMonsterChange} createThis={createMonster}/>
+                        <MonsterForm createThis={createMonster}/>
                         : characterType == "hero" ?
-                        <HeroForm monsterData={heroData} handleChange={handleHeroChange} createThis={createHero}/>
+                        <HeroForm createThis={createHero}/>
                         : null
                     }
                 </div>

@@ -26,18 +26,26 @@
                 height: 100%;
                 padding: 0 12px;
                 border: 2px solid $mainColorRed;
-                background: white;
                 font-family: $mainFont;
+                background: transparent;
                 color: $mainColorRed;
-                font-weight: 600;
+                font-weight: 500;
                 border-radius: 1px;
                 cursor: pointer;
-                transition: all 0.2s ease-in-out;
+                font-size: 15px;
+                transition: all 0.1s ease-in-out;
 
                 &.active{
                     background-color: $mainColorRed;
-                    color: white;
-                } 
+                    border: 2px solid $mainColorRed;
+                    color: $dirtyGold;
+                }
+
+                &:hover{
+                    background: $mainColorRed;
+                    border: 2px solid $mainColorRed;
+                    color: $dirtyGold;
+                }
             }
         }
     }

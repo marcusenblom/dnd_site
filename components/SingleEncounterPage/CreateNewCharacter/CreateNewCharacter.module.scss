@@ -10,11 +10,10 @@
     .createNewWindow{
         width: calc(100% - 32px);
         margin: 0 16px;
-        padding: 16px;
+        padding: 24px;
         border: 2px solid $mainColorRed;
         box-shadow: $boxShadow;
         border-radius: 3px;
-        background-color: white;
 
         .topHeader{
             width: 100%;
@@ -25,6 +24,7 @@
             .header{
                 font-size: 20px;
                 margin: 0;
+                font-weight: 500;
                 color: black;
             }
 

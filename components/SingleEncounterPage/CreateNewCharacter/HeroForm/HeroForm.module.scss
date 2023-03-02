@@ -1,0 +1,20 @@
+@import '/styles/_mixins.scss';
+@import '/styles/_variables.scss';
+
+.form{
+
+    .inputWrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        .inputContainer{
+            width: 100%;
+            max-width: 280px;
+            margin-right: 16px;
+        }
+    }
+}

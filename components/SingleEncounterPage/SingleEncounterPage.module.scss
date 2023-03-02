@@ -7,7 +7,7 @@
     min-height: 100vh;
     position: relative;
     z-index: 2;
-    color: white;
+    color: black;
     
     .bg{
         position: fixed;
@@ -19,8 +19,8 @@
         background-position: center;
         background-size: cover;
         z-index: -1;
-        filter: brightness(200%);
-        opacity: 0.2;
+        filter: brightness(100%);
+        opacity: 0.1;
     }
 
     .content{
