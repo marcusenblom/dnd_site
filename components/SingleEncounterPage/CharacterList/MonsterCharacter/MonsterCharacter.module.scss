@@ -83,10 +83,10 @@
 
             .healthBarContainer{
                 width: 220px;
-                height: 30px;
-                border-radius: 4px;
-                border: 2px solid rgb(34, 30, 30);
-                background-color: transparent;
+                height: 24px;
+                border-radius: 0 20px 99px 0;
+                border: 2px solid rgba(119, 12, 12, 0.506);
+                background-color: lightgrey;
                 transform: translateX(-12px);
                 z-index: 1;
                 box-shadow: $boxShadow;
@@ -111,8 +111,8 @@
                     .currentHealth{
                         height: 100%;
                         width: 50%;
-                        border-radius: 1px;
-                        background-color: $mainColorRed;
+                        border-radius: 0 20px 99px 0;
+                        background: linear-gradient(180deg, rgba(133,17,17,1) 0%, rgba(133,17,17,1) 31%, rgba(92,12,12,0.9850533963585434) 48%, rgba(133,17,17,1) 64%, rgba(199,53,53,1) 86%, rgba(177,41,41,1) 100%);
                     }
                 }
             }
